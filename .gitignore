@@ -105,13 +105,10 @@ fabric.properties
 .idea/.name
 .idea/misc.xml
 .idea/vcs.xml
-build.gradle.kts
-gradlew
-gradlew.bat
-settings.gradle.kts
 /gen/
 
 note.md
+_memo.md
 /.idea/jarRepositories.xml
 /idea-flex.skeleton
 /jflex-1.7.0-2.jar
