@@ -1,0 +1,69 @@
+{
+  "entryPagePath": "p0/tab-bar/pages/tab1/index",
+  "pages": [
+    "p0/tab-bar/pages/tab1/index",
+    "p0/tab-bar/pages/tab2/index",
+    "p0/tab-bar/pages/tab3/index"
+  ],
+  "subpackages": [
+    {
+      "root": "p1",
+      "pages": [
+        "user/pages/config/index"
+      ]
+    },
+    {
+      "root": "p2",
+      "pages": [
+        "order/pages/orders/index"
+      ]
+    }
+  ],
+  "tabBar": {
+    "color": "#52565C",
+    "selectedColor": "#436EF6",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "p0/tab-bar/pages/tab1/index",
+        "text": "首页",
+        "iconPath": "img/tab/tab1.png",
+        "selectedIconPath": "img/tab/tab1.png"
+      },
+      {
+        "pagePath": "p0/tab-bar/pages/tab2/index",
+        "text": "订单",
+        "iconPath": "img/tab/tab2.png",
+        "selectedIconPath": "img/tab/tab2.png"
+      },
+      {
+        "pagePath": "p0/tab-bar/pages/tab3/index",
+        "text": "我的",
+        "iconPath": "img/tab/tab3.png",
+        "selectedIconPath": "img/tab/tab3.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "test",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f8f8f8"
+  },
+  "networkTimeout": {
+    "request": 5000,
+    "downloadFile": 10000
+  },
+  "usingComponents": {
+    "van-divider": "miniprogram_npm/@vant/weapp/divider/index",
+    "van-uploader": "miniprogram_npm/@vant/weapp/uploader/index",
+    "van-action-sheet": "miniprogram_npm/@vant/weapp/action-sheet/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "resolveAlias": {
+    "@/*": "/*"
+  },
+  "debug": true
+}

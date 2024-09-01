@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "order-lines-header": "../order-lines-header/index"
+  },
+  "componentGenerics": {
+    "order-line": {
+      "default": "../order-line/index"
+    },
+    "selectable": true
+  }
+}

@@ -1,0 +1,4475 @@
+{
+  "share-element": {
+    "description": "共享元素，一种动画形式，类似于 flutter Hero动画，表现为元素像是在页面间穿越一样。该组件需与 page-container 组件结合使用。",
+    "attributeDescriptors": [
+      {
+        "key": "key",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "映射标记，与 page-container 中的 shar-element 对应。"
+      },
+      {
+        "key": "transform",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [
+          true,
+          false
+        ],
+        "requiredInEnums": true,
+        "description": "是否进行动画"
+      },
+      {
+        "key": "duration",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 300,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "动画时长，单位毫秒"
+      },
+      {
+        "key": "easing-function",
+        "types": [
+          "STRING"
+        ],
+        "default": "ease-out",
+        "required": false,
+        "enums": [
+          "ease-out",
+          "out",
+          "ease-in",
+          "in"
+        ],
+        "requiredInEnums": true,
+        "description": "css 缓动函数"
+      }
+    ],
+    "events": [
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/share-element.html"
+  },
+  "page-container": {
+    "description": "页面容器，“假页”容器组件，效果类似于 popup 弹出层，页面内存在该容器时，当用户进行返回操作，关闭该容器不关闭页面。返回操作包括三种情形，右滑手势、安卓物理返回键和调用 navigateBack 接口。",
+    "attributeDescriptors": [
+      {
+        "key": "show",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示容器组件。"
+      },
+      {
+        "key": "duration",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 300,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "动画时长，单位毫秒。"
+      },
+      {
+        "key": "z-index",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 100,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "z-index 层级"
+      },
+      {
+        "key": "overlay",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示遮罩层。"
+      },
+      {
+        "key": "position",
+        "types": [
+          "STRING"
+        ],
+        "default": "bottom",
+        "required": false,
+        "enums": [
+          "top",
+          "bottom",
+          "right",
+          "center"
+        ],
+        "requiredInEnums": true,
+        "description": "弹出位置。"
+      },
+      {
+        "key": "round",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示圆角"
+      },
+      {
+        "key": "close-on-slideDown",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否在下滑一段距离后关闭。"
+      },
+      {
+        "key": "overlay-style",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "自定义遮罩层样式。"
+      },
+      {
+        "key": "custom-style",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "自定义弹出层样式。"
+      }
+    ],
+    "events": [
+      "beforeenter",
+      "enter",
+      "afterenter",
+      "beforeleave",
+      "leave",
+      "afterleave",
+      "afterleave",
+      "clickoverlay"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/page-container.html"
+  },
+  "block": {
+    "attributeDescriptors": [],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "description": "仅作为逻辑渲染的容器"
+  },
+  "template": {
+    "description": "WXML提供模板（template），可以在模板中定义代码片段，然后在不同的地方调用。",
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/template.html",
+    "attributeDescriptors": [
+      {
+        "key": "is",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "引用了模板的名称，对应template的name属性。"
+      },
+      {
+        "key": "name",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "模板的名称"
+      },
+      {
+        "key": "data",
+        "types": [
+          "OBJECT"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "模板的数据"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false
+  },
+  "import": {
+    "description": "import可以在该文件中使用目标文件定义的template",
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/import.html",
+    "attributeDescriptors": [
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "导入的wxml文件的路径"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false
+  },
+  "include": {
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/import.html",
+    "attributeDescriptors": [
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "要包含的wxml文件的路径"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "description": "include 可以将目标文件除了 <template/> <wxs/> 外的整个代码引入，相当于是拷贝到 include 位置"
+  },
+  "wxs": {
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/",
+    "attributeDescriptors": [
+      {
+        "key": "module",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "此wxs模块的名称"
+      },
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "引入的wxs文件的路径"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "description": "在wxml中嵌入wxs脚本"
+  },
+  "qs": {
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/",
+    "attributeDescriptors": [
+      {
+        "key": "module",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "此qs模块的名称"
+      },
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "引入的qs文件的路径"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "description": "在wxml中嵌入qs脚本"
+  },
+  "slot": {
+    "attributeDescriptors": [
+      {
+        "key": "name",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "此插槽的名称"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "description": "自定义组件中可嵌入内容"
+  },
+  "view": {
+    "description": "视图容器",
+    "attributeDescriptors": [
+      {
+        "key": "hover-class",
+        "types": [
+          "STRING"
+        ],
+        "default": "none",
+        "required": false,
+        "enums": [
+          "none"
+        ],
+        "requiredInEnums": false,
+        "description": "指定按下去的样式类。当 hover-class=\"none\" 时，没有点击态效果"
+      },
+      {
+        "key": "hover-stop-propagation",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定是否阻止本节点的祖先节点出现点击态"
+      },
+      {
+        "key": "hover-start-time",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 50,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "按住后多久出现点击态，单位毫秒"
+      },
+      {
+        "key": "hover-stay-time",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 400,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "手指松开后点击态保留时间，单位毫秒"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/view.html"
+  },
+  "cover-image": {
+    "description": "覆盖在原生组件之上的图片视图。可覆盖的原生组件同<code>cover-view</code>，支持嵌套在<code>cover-view</code>里。",
+    "attributeDescriptors": [
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "图标路径，支持临时路径、网络地址（1.6.0起支持）、云文件ID（2.2.3起支持）。暂不支持base64格式。"
+      }
+    ],
+    "events": [
+      "load",
+      "error"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/cover-image.html"
+  },
+  "cover-view": {
+    "description": "覆盖在原生组件之上的文本视图",
+    "attributeDescriptors": [
+      {
+        "key": "scroll-top",
+        "types": [
+          "STRING",
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置顶部滚动偏移量，仅在设置了 overflow-y: scroll 成为滚动元素后生效"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html"
+  },
+  "movable-area": {
+    "description": "movable-view的可移动区域",
+    "attributeDescriptors": [
+      {
+        "key": "scale-area",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当里面的movable-view设置为支持双指缩放时，设置此值可将缩放手势生效区域修改为整个movable-area"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/movable-area.html"
+  },
+  "movable-view": {
+    "description": "可移动的视图容器，在页面中可以拖拽滑动。",
+    "attributeDescriptors": [
+      {
+        "key": "direction",
+        "types": [
+          "STRING"
+        ],
+        "default": "none",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "movable-view的移动方向，属性值有all、vertical、horizontal、none"
+      },
+      {
+        "key": "inertia",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "movable-view是否带有惯性"
+      },
+      {
+        "key": "out-of-bounds",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "超过可移动区域后，movable-view是否还可以移动"
+      },
+      {
+        "key": "x",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "定义x轴方向的偏移，如果x的值不在可移动范围内，会自动移动到可移动范围；改变x的值会触发动画"
+      },
+      {
+        "key": "y",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "定义y轴方向的偏移，如果y的值不在可移动范围内，会自动移动到可移动范围；改变y的值会触发动画"
+      },
+      {
+        "key": "damping",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 20,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "阻尼系数，用于控制x或y改变时的动画和过界回弹的动画，值越大移动越快"
+      },
+      {
+        "key": "friction",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 2,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "摩擦系数，用于控制惯性滑动的动画，值越大摩擦力越大，滑动越快停止；必须大于0，否则会被设置成默认值"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "scale",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否支持双指缩放，默认缩放手势生效区域是在movable-view内"
+      },
+      {
+        "key": "scale-min",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0.5,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "定义缩放倍数最小值"
+      },
+      {
+        "key": "scale-max",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 10,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "定义缩放倍数最大值"
+      },
+      {
+        "key": "scale-value",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "定义缩放倍数，取值范围为 0.5 - 10"
+      },
+      {
+        "key": "animation",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否使用动画"
+      }
+    ],
+    "events": [
+      "change",
+      "scale",
+      "htouchmove",
+      "vtouchmove"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/movable-view.html"
+  },
+  "scroll-view": {
+    "description": "可滚动视图区域。使用竖向滚动时，需要给scroll-view一个固定高度，通过 WXSS 设置 height。组件属性的长度单位默认为px，2.4.0起支持传入单位(rpx/px)。",
+    "attributeDescriptors": [
+      {
+        "key": "scroll-x",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "允许横向滚动"
+      },
+      {
+        "key": "scroll-y",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "允许纵向滚动"
+      },
+      {
+        "key": "upper-threshold",
+        "types": [
+          "NUMBER",
+          "STRING"
+        ],
+        "default": 50,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "距顶部/左边多远时，触发 <code>scrolltoupper</code> 事件"
+      },
+      {
+        "key": "lower-threshold",
+        "types": [
+          "NUMBER",
+          "STRING"
+        ],
+        "default": 50,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "距底部/右边多远时，触发 <code>scrolltolower</code> 事件"
+      },
+      {
+        "key": "scroll-top",
+        "types": [
+          "NUMBER",
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置竖向滚动条位置"
+      },
+      {
+        "key": "scroll-bottom",
+        "types": [
+          "NUMBER",
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置横向滚动条位置"
+      },
+      {
+        "key": "scroll-into-view",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "值应为某子元素id（id不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素"
+      },
+      {
+        "key": "scroll-with-animation",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "在设置滚动条位置时使用动画过渡"
+      },
+      {
+        "key": "enable-back-to-top",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向"
+      },
+      {
+        "key": "enable-flex",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "启用 flexbox 布局。开启后，当前节点声明了 display: flex 就会成为 flex container，并作用于其孩子节点。"
+      },
+      {
+        "key": "scroll-anchoring",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "开启 scroll anchoring 特性，即控制滚动位置不随内容变化而抖动，仅在 iOS 下生效，安卓下可参考 CSS overflow-anchor 属性。"
+      },
+      {
+        "key": "refresher-enabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "开启自定义下拉刷新"
+      },
+      {
+        "key": "refresher-threshold",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 45,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置自定义下拉刷新阈值"
+      },
+      {
+        "key": "refresher-default-style",
+        "types": [
+          "STRING"
+        ],
+        "default": "black",
+        "required": false,
+        "enums": [
+          "black",
+          "white",
+          "none"
+        ],
+        "requiredInEnums": true,
+        "description": "设置自定义下拉刷新默认样式，支持设置 black | white | none， none 表示不使用默认样式"
+      },
+      {
+        "key": "refresher-background",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#FFF",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置自定义下拉刷新区域背景颜色"
+      },
+      {
+        "key": "refresher-triggered",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置当前下拉刷新状态，true 表示下拉刷新已经被触发，false 表示下拉刷新未被触发"
+      }
+    ],
+    "events": [
+      "scrolltoupper",
+      "scrolltolower",
+      "scroll",
+      "refresherpulling",
+      "refresherrefresh",
+      "refresherrestore",
+      "refresherabort"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html"
+  },
+  "swiper": {
+    "description": "滑块视图容器。其中只可放置swiper-item组件，否则会导致未定义的行为。",
+    "attributeDescriptors": [
+      {
+        "key": "indicator-dots",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示面板指示点"
+      },
+      {
+        "key": "indicator-color",
+        "types": [
+          "COLOR"
+        ],
+        "default": "rgba(0, 0, 0, .3)",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指示点颜色"
+      },
+      {
+        "key": "indicator-active-color",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#000000",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当前选中的指示点颜色"
+      },
+      {
+        "key": "autoplay",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否自动切换"
+      },
+      {
+        "key": "current",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当前所在滑块的 index"
+      },
+      {
+        "key": "interval",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 5000,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "自动切换时间间隔"
+      },
+      {
+        "key": "duration",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 500,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "滑动动画时长"
+      },
+      {
+        "key": "circular",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否采用衔接滑动"
+      },
+      {
+        "key": "vertical",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "滑动方向是否为纵向"
+      },
+      {
+        "key": "previous-margin",
+        "types": [
+          "STRING"
+        ],
+        "default": "0px",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "前边距，可用于露出前一项的一小部分，接受 <code>px</code> 和 <code>rpx</code> 值"
+      },
+      {
+        "description": "后边距，可用于露出后一项的一小部分，接受 <code>px</code> 和 <code>rpx</code> 值",
+        "key": "next-margin",
+        "types": [
+          "STRING"
+        ],
+        "default": "0px",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true
+      },
+      {
+        "key": "display-multiple-items",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "同时显示的滑块数量"
+      },
+      {
+        "key": "skip-hidden-item-layout",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否跳过未显示的滑块布局，设为 true 可优化复杂情况下的滑动性能，但会丢失隐藏状态滑块的布局信息"
+      },
+      {
+        "key": "easing-function",
+        "types": [
+          "STRING"
+        ],
+        "default": "default",
+        "required": false,
+        "enums": [
+          "default",
+          "linear",
+          "easeInCubic",
+          "easeOutCubic",
+          "easeInOutCubic"
+        ],
+        "requiredInEnums": true,
+        "description": "指定 swiper 切换缓动动画类型"
+      }
+    ],
+    "events": [
+      "change",
+      "transition",
+      "animationfinish"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/swiper.html"
+  },
+  "swiper-item": {
+    "description": "仅可放置在swiper组件中，宽高自动设置为100%。",
+    "attributeDescriptors": [
+      {
+        "key": "item-id",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "该 swiper-item 的标识符"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/swiper-item.html"
+  },
+  "icon": {
+    "description": "图标。组件属性的长度单位默认为px，2.4.0起支持传入单位(rpx/px)。",
+    "attributeDescriptors": [
+      {
+        "key": "type",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [
+          "success",
+          "success_no_circle",
+          "info",
+          "warn",
+          "waiting",
+          "cancel",
+          "download",
+          "search",
+          "clear"
+        ],
+        "requiredInEnums": true,
+        "description": "icon的类型"
+      },
+      {
+        "key": "size",
+        "types": [
+          "STRING",
+          "NUMBER"
+        ],
+        "default": 23,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "icon的大小"
+      },
+      {
+        "key": "color",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "icon的颜色"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/icon.html"
+  },
+  "progress": {
+    "description": "进度条。组件属性的长度单位默认为px，2.4.0起支持传入单位(rpx/px)。",
+    "attributeDescriptors": [
+      {
+        "key": "percent",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "百分比0~100"
+      },
+      {
+        "key": "show-info",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "在进度条右侧显示百分比"
+      },
+      {
+        "key": "border-radius",
+        "types": [
+          "NUMBER",
+          "STRING"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "圆角大小"
+      },
+      {
+        "key": "font-size",
+        "types": [
+          "NUMBER",
+          "STRING"
+        ],
+        "default": 16,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "右侧百分比字体大小"
+      },
+      {
+        "key": "stroke-width",
+        "types": [
+          "NUMBER",
+          "STRING"
+        ],
+        "default": 6,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "进度条线的宽度"
+      },
+      {
+        "key": "color",
+        "types": [
+          "STRING"
+        ],
+        "default": "#09BB07",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "进度条颜色"
+      },
+      {
+        "key": "activeColor",
+        "types": [
+          "STRING"
+        ],
+        "default": "#09BB07",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "已选择的进度条的颜色"
+      },
+      {
+        "key": "backgroundColor",
+        "types": [
+          "STRING"
+        ],
+        "default": "#EBEBEB",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "未选择的进度条的颜色"
+      },
+      {
+        "key": "active",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "进度条从左往右的动画"
+      },
+      {
+        "key": "active-mode",
+        "types": [
+          "STRING"
+        ],
+        "default": "backwards",
+        "required": false,
+        "enums": [
+          "forwards",
+          "backwards"
+        ],
+        "requiredInEnums": true,
+        "description": "backwards: 动画从头播；forwards：动画从上次结束点接着播"
+      },
+      {
+        "key": "duration",
+        "types": [
+          "NUMBER",
+          "STRING"
+        ],
+        "default": 30,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "进度增加1%所需毫秒数"
+      }
+    ],
+    "events": [
+      "activeend"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/progress.html"
+  },
+  "rich-text": {
+    "description": "富文本",
+    "attributeDescriptors": [
+      {
+        "key": "nodes",
+        "types": [
+          "ARRAY",
+          "STRING"
+        ],
+        "default": [],
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "节点列表/HTML String"
+      },
+      {
+        "key": "space",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [
+          "ensp",
+          "emsp",
+          "nbsp"
+        ],
+        "requiredInEnums": true,
+        "description": "显示连续空格"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/rich-text.html"
+  },
+  "text": {
+    "description": "文本",
+    "attributeDescriptors": [
+      {
+        "key": "selectable",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "文本是否可选"
+      },
+      {
+        "key": "space",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [
+          "ensp",
+          "emsp",
+          "nbsp"
+        ],
+        "requiredInEnums": true,
+        "description": "显示连续空格"
+      },
+      {
+        "key": "decode",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否解码"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/text.html"
+  },
+  "button": {
+    "description": "按钮",
+    "attributeDescriptors": [
+      {
+        "key": "size",
+        "types": [
+          "STRING"
+        ],
+        "default": "default",
+        "required": false,
+        "enums": [
+          "default",
+          "mini"
+        ],
+        "requiredInEnums": true,
+        "description": "按钮的大小"
+      },
+      {
+        "key": "type",
+        "types": [
+          "STRING"
+        ],
+        "default": "default",
+        "required": false,
+        "enums": [
+          "primary",
+          "default",
+          "warn"
+        ],
+        "requiredInEnums": true,
+        "description": "按钮的样式类型"
+      },
+      {
+        "key": "plain",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "按钮是否镂空，背景色透明"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "loading",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "名称前是否带 loading 图标"
+      },
+      {
+        "key": "form-type",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [
+          "submit",
+          "reset"
+        ],
+        "requiredInEnums": true,
+        "description": "用于 form 组件，点击分别会触发 form 组件的 submit/reset 事件"
+      },
+      {
+        "key": "open-type",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [
+          "contact",
+          "share",
+          "getPhoneNumber",
+          "getUserInfo",
+          "launchApp",
+          "openSetting",
+          "feedback"
+        ],
+        "requiredInEnums": true,
+        "description": "微信开放能力"
+      },
+      {
+        "key": "hover-class",
+        "types": [
+          "STRING"
+        ],
+        "default": "button-hover",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定按钮按下去的样式类"
+      },
+      {
+        "key": "hover-stop-propagation",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定是否阻止本节点的祖先节点出现点击态"
+      },
+      {
+        "key": "hover-start-time",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 20,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "按住后多久出现点击态，单位毫秒"
+      },
+      {
+        "key": "hover-stay-time",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 70,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "手指松开后点击态保留时间，单位毫秒"
+      },
+      {
+        "key": "lang",
+        "types": [
+          "STRING"
+        ],
+        "default": "en",
+        "required": false,
+        "enums": [
+          "en",
+          "zh_CN",
+          "zh_TW"
+        ],
+        "requiredInEnums": true,
+        "description": "指定返回用户信息的语言"
+      },
+      {
+        "key": "session-from",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "会话来源，open-type=\"contact\"时有效"
+      },
+      {
+        "key": "send-message-title",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "会话内消息卡片标题，open-type=\"contact\"时有效"
+      },
+      {
+        "key": "send-message-img",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "会话内消息卡片图片，open-type=\"contact\"时有效"
+      },
+      {
+        "key": "send-message-path",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "会话内消息卡片点击跳转小程序路径，open-type=\"contact\"时有效"
+      },
+      {
+        "key": "app-parameter",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "打开 APP 时，向 APP 传递的参数，open-type=launchApp时有效"
+      },
+      {
+        "key": "show-message-card",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示会话内消息卡片，设置此参数为 true，用户进入客服会话会在右下角显示\"可能要发送的小程序\"提示，用户点击后可以快速发送小程序消息，open-type=\"contact\"时有效"
+      }
+    ],
+    "events": [
+      "getuserinfo",
+      "contact",
+      "getphonenumber",
+      "error",
+      "opensetting",
+      "launchapp"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/button.html"
+  },
+  "checkbox": {
+    "description": "多选项目",
+    "attributeDescriptors": [
+      {
+        "key": "value",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "checkbox标识"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "checked",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当前是否选中，可用来设置默认选中"
+      },
+      {
+        "key": "color",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#09BB07",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "checkbox的颜色"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/checkbox.html"
+  },
+  "checkbox-group": {
+    "description": "多项选择器，内部由多个checkbox组成。",
+    "attributeDescriptors": [],
+    "events": [
+      "change"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/checkbox-group.html"
+  },
+  "editor": {
+    "description": "富文本编辑器，可以对图片、文字进行编辑。",
+    "attributeDescriptors": [
+      {
+        "key": "read-only",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置编辑器为只读"
+      },
+      {
+        "key": "placeholder",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "提示信息"
+      },
+      {
+        "key": "show-img-size",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "点击图片时显示图片大小控件"
+      },
+      {
+        "key": "show-img-toolbar",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "点击图片时显示工具栏控件"
+      },
+      {
+        "key": "show-img-resize",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "点击图片时显示修改尺寸控件"
+      }
+    ],
+    "events": [
+      "ready",
+      "focus",
+      "blur",
+      "input",
+      "statuschange"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/editor.html"
+  },
+  "form": {
+    "description": "表单。将组件内的用户输入的switch input checkbox slider radio picker 提交。",
+    "attributeDescriptors": [
+      {
+        "key": "report-submit",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否返回 formId 用于发送<a href=\"https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/template-message.html\">模板消息</a>"
+      },
+      {
+        "key": "report-submit-timeout",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "等待一段时间（毫秒数）以确认 formId 是否生效"
+      }
+    ],
+    "events": [
+      "submit",
+      "reset"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/form.html"
+  },
+  "input": {
+    "description": "输入框。该组件是原生组件，使用时请注意相关限制",
+    "attributeDescriptors": [
+      {
+        "key": "value",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "输入框的初始内容"
+      },
+      {
+        "key": "type",
+        "types": [
+          "STRING"
+        ],
+        "default": "text",
+        "required": false,
+        "enums": [
+          "text",
+          "number",
+          "idcard",
+          "digit"
+        ],
+        "requiredInEnums": true,
+        "description": "input 的类型"
+      },
+      {
+        "key": "password",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否是密码类型"
+      },
+      {
+        "key": "placeholder",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "输入框为空时占位符"
+      },
+      {
+        "key": "placeholder-style",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定 placeholder 的样式"
+      },
+      {
+        "key": "placeholder-class",
+        "types": [
+          "STRING"
+        ],
+        "default": "input-placeholder",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定 placeholder 的样式类"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "maxlength",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 140,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "最大输入长度，设置为 -1 的时候不限制最大长度"
+      },
+      {
+        "key": "cursor-spacing",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离"
+      },
+      {
+        "key": "focus",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "自动聚焦，拉起键盘"
+      },
+      {
+        "key": "confirm-type",
+        "types": [
+          "STRING"
+        ],
+        "default": "done",
+        "required": false,
+        "enums": [
+          "send",
+          "search",
+          "next",
+          "go",
+          "done"
+        ],
+        "requiredInEnums": true,
+        "description": "设置键盘右下角按钮的文字，仅在type='text'时生效"
+      },
+      {
+        "key": "confirm-hold",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "点击键盘右下角按钮时是否保持键盘不收起"
+      },
+      {
+        "key": "cursor",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定focus时的光标位置"
+      },
+      {
+        "key": "selection-start",
+        "types": [
+          "NUMBER"
+        ],
+        "default": -1,
+        "description": "光标起始位置，自动聚集时有效，需与selection-end搭配使用",
+        "requiredInEnums": true,
+        "enums": [],
+        "required": false
+      },
+      {
+        "key": "selection-end",
+        "types": [
+          "NUMBER"
+        ],
+        "default": -1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "光标结束位置，自动聚集时有效，需与selection-start搭配使用"
+      },
+      {
+        "key": "adjust-position",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "键盘弹起时，是否自动上推页面"
+      },
+      {
+        "key": "hold-keyboard",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "focus时，点击页面的时候不收起键盘"
+      }
+    ],
+    "events": [
+      "input",
+      "focus",
+      "blur",
+      "confirm",
+      "keyboardheightchange"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/input.html"
+  },
+  "label": {
+    "description": "用来改进表单组件的可用性。",
+    "attributeDescriptors": [
+      {
+        "key": "for",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "绑定控件的 id"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/label.html"
+  },
+  "picker": {
+    "description": "从底部弹起的滚动选择器。",
+    "attributeDescriptors": [
+      {
+        "key": "mode",
+        "types": [
+          "STRING"
+        ],
+        "default": "selector",
+        "required": false,
+        "enums": [
+          "selector",
+          "multiSelector",
+          "time",
+          "date",
+          "region"
+        ],
+        "requiredInEnums": true,
+        "description": "选择器类型"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "range",
+        "types": [
+          "ARRAY",
+          "OBJECT"
+        ],
+        "default": [],
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "mode 为 selector 或 multiSelector 时，range 有效"
+      },
+      {
+        "key": "range-key",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当 range 是一个 Object Array 时，通过 range-key 来指定 Object 中 key 的值作为选择器显示内容"
+      },
+      {
+        "key": "value",
+        "types": [
+          "NUMBER",
+          "ARRAY"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "表示选择了 range 中的第几个（下标从 0 开始）"
+      },
+      {
+        "key": "end",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "表示有效日期范围的结束，字符串格式为\"YYYY-MM-DD\""
+      },
+      {
+        "key": "fields",
+        "types": [
+          "STRING"
+        ],
+        "default": "day",
+        "required": false,
+        "enums": [
+          "year",
+          "month",
+          "day"
+        ],
+        "requiredInEnums": true,
+        "description": "表示选择器的粒度"
+      },
+      {
+        "key": "start",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "表示有效日期范围的开始，字符串格式为\"YYYY-MM-DD\""
+      },
+      {
+        "key": "custom-item",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当mode=region，可为每一列的顶部添加一个自定义的项"
+      }
+    ],
+    "events": [
+      "cancel",
+      "change",
+      "columnchange"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/picker.html"
+  },
+  "picker-view": {
+    "description": "嵌入页面的滚动选择器。其中只可放置 picker-view-column组件，其它节点不会显示。",
+    "attributeDescriptors": [
+      {
+        "key": "value",
+        "types": [
+          "ARRAY"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "数组中的数字依次表示 picker-view 内的 picker-view-column 选择的第几项（下标从 0 开始），数字大于 picker-view-column 可选项长度时，选择最后一项。"
+      },
+      {
+        "key": "indicator-style",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置选择器中间选中框的样式"
+      },
+      {
+        "key": "indicator-class",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置选择器中间选中框的类名"
+      },
+      {
+        "key": "mask-style",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置蒙层的样式"
+      },
+      {
+        "key": "mask-class",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置蒙层的类名"
+      }
+    ],
+    "events": [
+      "change",
+      "pickstart",
+      "pickend"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/picker-view.html"
+  },
+  "picker-view-column": {
+    "description": "滚动选择器子项。仅可放置于picker-view中，其孩子节点的高度会自动设置成与picker-view的选中框的高度一致",
+    "attributeDescriptors": [],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/picker-view-column.html"
+  },
+  "radio": {
+    "description": "单选项目",
+    "attributeDescriptors": [
+      {
+        "key": "value",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "radio 标识"
+      },
+      {
+        "key": "checked",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当前是否选中"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "color",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#09BB07",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "radio的颜色"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/radio.html"
+  },
+  "radio-group": {
+    "description": "单项选择器，内部由多个 radio 组成。",
+    "attributeDescriptors": [],
+    "events": [
+      "change"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/radio-group.html"
+  },
+  "slider": {
+    "description": "滑动选择器。",
+    "attributeDescriptors": [
+      {
+        "key": "min",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "最小值"
+      },
+      {
+        "key": "max",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 100,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "最大值"
+      },
+      {
+        "key": "step",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "步长，取值必须大于 0，并且可被(max - min)整除"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "value",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当前取值"
+      },
+      {
+        "key": "color",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#e9e9e9",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "背景条的颜色（请使用 backgroundColor）"
+      },
+      {
+        "key": "selected-color",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#1aad19",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "已选择的颜色（请使用 activeColor）"
+      },
+      {
+        "key": "activeColor",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#1aad19",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "已选择的颜色"
+      },
+      {
+        "key": "backgroundColor",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#e9e9e9",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "背景条的颜色"
+      },
+      {
+        "key": "block-size",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "滑块的大小，取值范围为 12 - 28"
+      },
+      {
+        "key": "block-color",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#FFFFFF",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "滑块的颜色"
+      },
+      {
+        "key": "show-value",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示当前 value"
+      }
+    ],
+    "events": [
+      "change",
+      "changing"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/slider.html"
+  },
+  "switch": {
+    "description": "开关选择器。",
+    "attributeDescriptors": [
+      {
+        "key": "checked",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否选中"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "type",
+        "types": [
+          "STRING"
+        ],
+        "default": "switch",
+        "required": false,
+        "enums": [
+          "switch",
+          "checkbox"
+        ],
+        "requiredInEnums": true,
+        "description": "样式，有效值：switch, checkbox"
+      },
+      {
+        "key": "color",
+        "types": [
+          "COLOR"
+        ],
+        "default": "#04BE02",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "switch 的颜色"
+      }
+    ],
+    "events": [
+      "change"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/switch.html"
+  },
+  "textarea": {
+    "description": "多行输入框。该组件是原生组件，使用时请注意相关限制。",
+    "attributeDescriptors": [
+      {
+        "key": "value",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "输入框的内容"
+      },
+      {
+        "key": "placeholder",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "输入框为空时占位符"
+      },
+      {
+        "key": "placeholder-style",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定 placeholder 的样式"
+      },
+      {
+        "key": "placeholder-class",
+        "types": [
+          "STRING"
+        ],
+        "default": "text-placeholder",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定 placeholder 的样式类"
+      },
+      {
+        "key": "disabled",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否禁用"
+      },
+      {
+        "key": "maxlength",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 140,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "最大输入长度，设置为 -1 的时候不限制最大长度"
+      },
+      {
+        "key": "focus",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "获取焦点"
+      },
+      {
+        "key": "auto-height",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否自动增高，设置auto-height时，style.height不生效"
+      },
+      {
+        "key": "fixed",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "如果 textarea 是在一个 position:fixed 的区域，需要显示指定属性 fixed 为 true"
+      },
+      {
+        "key": "cursor-spacing",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 140,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定光标与键盘的距离"
+      },
+      {
+        "key": "cursor",
+        "types": [
+          "NUMBER"
+        ],
+        "default": -140,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定focus时的光标位置"
+      },
+      {
+        "key": "show-confirm-bar",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示键盘上方带有”完成“按钮那一栏"
+      },
+      {
+        "key": "selection-start",
+        "types": [
+          "NUMBER"
+        ],
+        "default": -1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "光标起始位置，自动聚集时有效，需与selection-end搭配使用"
+      },
+      {
+        "key": "selection-end",
+        "types": [
+          "NUMBER"
+        ],
+        "default": -1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "光标结束位置，自动聚集时有效，需与selection-start搭配使用"
+      },
+      {
+        "key": "adjust-position",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "键盘弹起时，是否自动上推页面"
+      },
+      {
+        "key": "hold-keyboard",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "focus时，点击页面的时候不收起键盘"
+      }
+    ],
+    "events": [
+      "focus",
+      "blur",
+      "linechange",
+      "input",
+      "confirm",
+      "keyboardheightchange"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/textarea.html"
+  },
+  "functional-page-navigator": {
+    "description": "仅在插件中有效，用于跳转到插件功能页。",
+    "attributeDescriptors": [
+      {
+        "key": "version",
+        "types": [
+          "STRING"
+        ],
+        "default": "release",
+        "required": false,
+        "enums": [
+          "release",
+          "develop",
+          "trial"
+        ],
+        "requiredInEnums": true,
+        "description": "跳转到的小程序版本，线上版本必须设置为 release"
+      },
+      {
+        "key": "name",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [
+          "loginAndGetUserInfo",
+          "requestPayment",
+          "chooseAddress"
+        ],
+        "requiredInEnums": true,
+        "description": "要跳转到的功能页"
+      },
+      {
+        "key": "args",
+        "types": [
+          "OBJECT"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "功能页参数，参数格式与具体功能页相关"
+      }
+    ],
+    "events": [
+      "success",
+      "fail",
+      "cancel"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/functional-page-navigator.html"
+  },
+  "navigator": {
+    "description": "页面链接。",
+    "attributeDescriptors": [
+      {
+        "key": "target",
+        "types": [
+          "STRING"
+        ],
+        "default": "self",
+        "required": false,
+        "enums": [
+          "miniProgram",
+          "self"
+        ],
+        "requiredInEnums": true,
+        "description": "在哪个目标上发生跳转，默认当前小程序"
+      },
+      {
+        "key": "url",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当前小程序内的跳转链接"
+      },
+      {
+        "key": "open-type",
+        "types": [
+          "STRING"
+        ],
+        "default": "navigate",
+        "required": false,
+        "enums": [
+          "redirect",
+          "navigate",
+          "switchTab",
+          "reLaunch",
+          "navigateBack",
+          "exit"
+        ],
+        "requiredInEnums": true,
+        "description": "跳转方式"
+      },
+      {
+        "key": "delta",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当 open-type 为 'navigateBack' 时有效，表示回退的层数"
+      },
+      {
+        "key": "app-id",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当target=\"miniProgram\"时有效，要打开的小程序 appId"
+      },
+      {
+        "key": "path",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当target=\"miniProgram\"时有效，打开的页面路径，如果为空则打开首页"
+      },
+      {
+        "key": "extra-data",
+        "types": [
+          "OBJECT"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当<code>target=\"miniProgram\"</code>时有效，需要传递给目标小程序的数据，目标小程序可在 <code>App.onLaunch()</code>，<code>App.onShow()</code> 中获取到这份数据。"
+      },
+      {
+        "key": "version",
+        "types": [
+          "STRING"
+        ],
+        "default": "release",
+        "required": false,
+        "enums": [
+          "release",
+          "develop",
+          "trial"
+        ],
+        "requiredInEnums": true,
+        "description": "当target=\"miniProgram\"时有效，要打开的小程序版本"
+      },
+      {
+        "key": "hover-class",
+        "types": [
+          "STRING"
+        ],
+        "default": "navigator-hover",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定点击时的样式类，当hover-class=\"none\"时，没有点击态效果"
+      },
+      {
+        "key": "hover-stop-propagation",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定是否阻止本节点的祖先节点出现点击态"
+      },
+      {
+        "key": "hover-start-time",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 50,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "按住后多久出现点击态，单位毫秒"
+      },
+      {
+        "key": "hover-stay-time",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 600,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "手指松开后点击态保留时间，单位毫秒"
+      }
+    ],
+    "events": [
+      "success",
+      "fail",
+      "complete"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html"
+  },
+  "audio": {
+    "description": "音频。1.6.0版本开始，该组件不再维护。建议使用能力更强的 wx.createInnerAudioContext 接口",
+    "attributeDescriptors": [
+      {
+        "key": "id",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "audio 组件的唯一标识符"
+      },
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "要播放音频的资源地址"
+      },
+      {
+        "key": "loop",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否循环播放"
+      },
+      {
+        "key": "controls",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示默认控件"
+      },
+      {
+        "key": "poster",
+        "types": [
+          "STRING"
+        ],
+        "default": "未知音频",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "默认控件上的音频封面的图片资源地址，如果 controls 属性值为 false 则设置 poster 无效"
+      },
+      {
+        "key": "name",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "默认控件上的音频名字，如果 controls 属性值为 false 则设置 name 无效"
+      },
+      {
+        "key": "author",
+        "types": [
+          "STRING"
+        ],
+        "default": "未知作者",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "默认控件上的作者名字，如果 controls 属性值为 false 则设置 author 无效"
+      }
+    ],
+    "events": [
+      "error",
+      "play",
+      "pause",
+      "timeupdate",
+      "ended"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/audio.html"
+  },
+  "camera": {
+    "description": "系统相机。扫码二维码功能，需升级微信客户端至6.7.3。需要用户授权 <code>scope.camera</code>。",
+    "attributeDescriptors": [
+      {
+        "key": "mode",
+        "types": [
+          "STRING"
+        ],
+        "default": "normal",
+        "required": false,
+        "enums": [
+          "scanCode",
+          "normal"
+        ],
+        "requiredInEnums": true,
+        "description": "应用模式，只在初始化时有效，不能动态变更"
+      },
+      {
+        "key": "device-position",
+        "types": [
+          "STRING"
+        ],
+        "default": "back",
+        "required": false,
+        "enums": [
+          "front",
+          "back"
+        ],
+        "requiredInEnums": true,
+        "description": "摄像头朝向"
+      },
+      {
+        "key": "flash",
+        "types": [
+          "STRING"
+        ],
+        "default": "auto",
+        "required": false,
+        "enums": [
+          "auto",
+          "on",
+          "off",
+          "torch"
+        ],
+        "requiredInEnums": true,
+        "description": "闪光灯模式"
+      },
+      {
+        "key": "frame-size",
+        "types": [
+          "STRING"
+        ],
+        "default": "medium",
+        "required": false,
+        "enums": [
+          "small",
+          "large",
+          "medium"
+        ],
+        "requiredInEnums": true,
+        "description": "指定期望的相机帧数据尺寸"
+      }
+    ],
+    "events": [
+      "stop",
+      "error",
+      "initdone",
+      "scancode"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/camera.html"
+  },
+  "image": {
+    "description": "图片。支持JPG、PNG、SVG、WEBP格式，2.3.0 起支持云文件ID。",
+    "attributeDescriptors": [
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "图片资源地址"
+      },
+      {
+        "key": "mode",
+        "types": [
+          "STRING"
+        ],
+        "default": "back",
+        "required": false,
+        "enums": [
+          "scaleToFill",
+          "aspectFit",
+          "widthFix",
+          "aspectFill",
+          "top",
+          "bottom",
+          "center",
+          "left",
+          "right",
+          "top left",
+          "top right",
+          "bottom left",
+          "bottom right"
+        ],
+        "requiredInEnums": true,
+        "description": "图片裁剪、缩放的模式"
+      },
+      {
+        "key": "webp",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否是webP格式"
+      },
+      {
+        "key": "lazy-load",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "图片懒加载，在即将进入一定范围（上下三屏）时才开始加载"
+      },
+      {
+        "key": "show-menu-by-longpress",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "开启长按图片显示识别小程序码菜单"
+      }
+    ],
+    "events": [
+      "error",
+      "load"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/image.html"
+  },
+  "live-player": {
+    "description": "实时音视频播放（v2.9.1 起支持同层渲染）。相关api：<code>wx.createLivePlayerContext</code>",
+    "attributeDescriptors": [
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "音视频地址"
+      },
+      {
+        "key": "mode",
+        "types": [
+          "STRING"
+        ],
+        "default": "live",
+        "required": false,
+        "enums": [
+          "mode",
+          "RTC"
+        ],
+        "requiredInEnums": true,
+        "description": "模式"
+      },
+      {
+        "key": "autoplay",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "自动播放"
+      },
+      {
+        "key": "muted",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否静音"
+      },
+      {
+        "key": "orientation",
+        "types": [
+          "STRING"
+        ],
+        "default": "vertical",
+        "required": false,
+        "enums": [
+          "horizontal",
+          "vertical"
+        ],
+        "requiredInEnums": true,
+        "description": "画面方向"
+      },
+      {
+        "key": "object-fit",
+        "types": [
+          "STRING"
+        ],
+        "default": "contain",
+        "required": false,
+        "enums": [
+          "fillCrop",
+          "contain"
+        ],
+        "requiredInEnums": true,
+        "description": "填充模式，可选值有 contain，fillCrop"
+      },
+      {
+        "key": "background-mute",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "进入后台时是否静音（已废弃，默认退台静音）"
+      },
+      {
+        "key": "min-cache",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "最小缓冲区，单位s（RTC 模式推荐 0.2s）"
+      },
+      {
+        "key": "max-cache",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 3,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "最大缓冲区，单位s（RTC 模式推荐 0.8s）"
+      },
+      {
+        "key": "sound-mode",
+        "types": [
+          "STRING"
+        ],
+        "default": "speaker",
+        "required": false,
+        "enums": [
+          "ear",
+          "speaker"
+        ],
+        "requiredInEnums": true,
+        "description": "声音输出方式"
+      },
+      {
+        "key": "auto-pause-if-navigate",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当跳转到其它小程序页面时，是否自动暂停本页面的实时音视频播放"
+      },
+      {
+        "key": "auto-pause-if-open-native",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当跳转到其它微信原生页面时，是否自动暂停本页面的实时音视频播放"
+      }
+    ],
+    "events": [
+      "fullscreenchange",
+      "statechange",
+      "netstatus"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/live-player.html"
+  },
+  "live-pusher": {
+    "description": "实时音视频录制（v2.9.1 起支持同层渲染）。需要用户授权 <code>scope.camera</code>、<code>scope.record</code>。",
+    "attributeDescriptors": [
+      {
+        "key": "url",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "推流地址"
+      },
+      {
+        "key": "mode",
+        "types": [
+          "STRING"
+        ],
+        "default": "RTC",
+        "required": false,
+        "enums": [
+          "SD",
+          "HD",
+          "FHD",
+          "RTC"
+        ],
+        "requiredInEnums": true,
+        "description": "SD（标清）, HD（高清）, FHD（超清）, RTC（实时通话）"
+      },
+      {
+        "key": "autopush",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "自动推流"
+      },
+      {
+        "key": "muted",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否静音"
+      },
+      {
+        "key": "enable-camera",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "开启摄像头"
+      },
+      {
+        "key": "auto-focus",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "自动聚集"
+      },
+      {
+        "key": "orientation",
+        "types": [
+          "STRING"
+        ],
+        "default": "vertical",
+        "required": false,
+        "enums": [
+          "horizontal",
+          "vertical"
+        ],
+        "requiredInEnums": true,
+        "description": "画面方向"
+      },
+      {
+        "key": "beauty",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "美颜，取值范围 0-9 ，0 表示关闭"
+      },
+      {
+        "key": "whiteness",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "美白，取值范围 0-9 ，0 表示关闭"
+      },
+      {
+        "key": "aspect",
+        "types": [
+          "STRING"
+        ],
+        "default": "9:16",
+        "required": false,
+        "enums": [
+          "3:4",
+          "9:16"
+        ],
+        "requiredInEnums": true,
+        "description": "宽高比"
+      },
+      {
+        "key": "background-mute",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "进入后台时是否静音"
+      },
+      {
+        "key": "min-bitrate",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 200,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "最小码率"
+      },
+      {
+        "key": "max-bitrate",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1000,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "最大码率"
+      },
+      {
+        "key": "audio-quality",
+        "types": [
+          "STRING"
+        ],
+        "default": "high",
+        "required": false,
+        "enums": [
+          "high",
+          "low"
+        ],
+        "requiredInEnums": true,
+        "description": "高音质(48KHz)或低音质(16KHz)，值为high, low"
+      },
+      {
+        "key": "waiting-image",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "进入后台时推流的等待画面"
+      },
+      {
+        "key": "waiting-image-hash",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "等待画面资源的MD5值"
+      },
+      {
+        "key": "zoom",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "调整焦距"
+      },
+      {
+        "key": "device-position",
+        "types": [
+          "STRING"
+        ],
+        "default": "front",
+        "required": false,
+        "enums": [
+          "back",
+          "front"
+        ],
+        "requiredInEnums": true,
+        "description": "前置或后置，值为front, back"
+      },
+      {
+        "key": "background-mute",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "进入后台时是否静音"
+      },
+      {
+        "key": "mirror",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "设置推流画面是否镜像，产生的效果在 live-player 反应到"
+      }
+    ],
+    "events": [
+      "statechange",
+      "netstatus",
+      "error",
+      "bgmstart",
+      "bgmprogress",
+      "bgmcomplete"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/live-pusher.html"
+  },
+  "video": {
+    "description": "视频（v2.4.0 起支持同层渲染）。相关api：wx.createVideoContext",
+    "attributeDescriptors": [
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "要播放视频的资源地址，支持云文件ID"
+      },
+      {
+        "key": "duration",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定视频时长"
+      },
+      {
+        "key": "controls",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示默认播放控件（播放/暂停按钮、播放进度、时间）"
+      },
+      {
+        "key": "danmu-list",
+        "types": [
+          "ARRAY",
+          "OBJECT"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "弹幕列表"
+      },
+      {
+        "key": "danmu-btn",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示弹幕按钮，只在初始化时有效，不能动态变更"
+      },
+      {
+        "key": "enable-danmu",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否展示弹幕，只在初始化时有效，不能动态变更"
+      },
+      {
+        "key": "autoplay",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否自动播放"
+      },
+      {
+        "key": "loop",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否循环播放"
+      },
+      {
+        "key": "muted",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否静音播放"
+      },
+      {
+        "key": "initial-time",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定视频初始播放位置"
+      },
+      {
+        "key": "page-gesture",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "在非全屏模式下，是否开启亮度与音量调节手势（废弃，见 vslide-gesture）"
+      },
+      {
+        "key": "direction",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [
+          "0",
+          "90",
+          "-90"
+        ],
+        "requiredInEnums": true,
+        "description": "设置全屏时视频的方向，不指定则根据宽高比自动判断"
+      },
+      {
+        "key": "show-progress",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "若不设置，宽度大于240时才会显示"
+      },
+      {
+        "key": "show-fullscreen-btn",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示全屏按钮"
+      },
+      {
+        "key": "show-play-btn",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示视频底部控制栏的播放按钮"
+      },
+      {
+        "key": "show-center-play-btn",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示视频中间的播放按钮"
+      },
+      {
+        "key": "enable-progress-gesture",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否开启控制进度的手势"
+      },
+      {
+        "key": "object-fit",
+        "types": [
+          "STRING"
+        ],
+        "default": "9:16",
+        "required": false,
+        "enums": [
+          "contain",
+          "fill",
+          "cover"
+        ],
+        "requiredInEnums": true,
+        "description": "当视频大小与 video 容器大小不一致时，视频的表现形式"
+      },
+      {
+        "key": "poster",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "视频封面的图片网络资源地址或云文件ID（2.3.0）。若 controls 属性值为 false 则设置 poster 无效"
+      },
+      {
+        "key": "show-mute-btn",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否显示静音按钮"
+      },
+      {
+        "key": "title",
+        "types": [
+          "STRING"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "视频的标题，全屏时在顶部展示"
+      },
+      {
+        "key": "play-btn-position",
+        "types": [
+          "STRING"
+        ],
+        "default": "bottom",
+        "required": false,
+        "enums": [
+          "center",
+          "bottom"
+        ],
+        "requiredInEnums": true,
+        "description": "播放按钮的位置"
+      },
+      {
+        "key": "enable-play-gesture",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否开启播放手势，即双击切换播放/暂停"
+      },
+      {
+        "key": "auto-pause-if-navigate",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当跳转到其它小程序页面时，是否自动暂停本页面的视频"
+      },
+      {
+        "key": "auto-pause-if-open-native",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当跳转到其它微信原生页面时，是否自动暂停本页面的视频"
+      },
+      {
+        "key": "vslide-gesture",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "在非全屏模式下，是否开启亮度与音量调节手势（同 page-gesture）"
+      },
+      {
+        "key": "vslide-gesture-in-fullscreen",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "在全屏模式下，是否开启亮度与音量调节手势"
+      },
+      {
+        "key": "ad-unit-id",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "视频前贴广告单元ID"
+      }
+    ],
+    "events": [
+      "play",
+      "pause",
+      "ended",
+      "timeupdate",
+      "fullscreenchange",
+      "waiting",
+      "error",
+      "progress",
+      "loadedmetadata"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/video.html"
+  },
+  "ad-custom": {
+    "description": "原生模板 广告。",
+    "attributeDescriptors": [
+      {
+        "key": "unit-id",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "广告单元id，可在小程序管理后台的流量主模块新建"
+      },
+      {
+        "key": "ad-intervals",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "广告自动刷新的间隔时间，单位为秒，参数值必须大于等于30（该参数不传入时 模板 广告不会自动刷新）"
+      }
+    ],
+    "events": [
+      "load",
+      "error"
+    ],
+    "canOpen": false,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/ad-custom.html"
+  },
+  "map": {
+    "description": "地图（v2.7.0 起支持同层渲染）。相关api wx.createMapContext。",
+    "attributeDescriptors": [
+      {
+        "key": "longitude",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "中心经度"
+      },
+      {
+        "key": "latitude",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "中心纬度"
+      },
+      {
+        "key": "scale",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 16,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "缩放级别，取值范围为3-20"
+      },
+      {
+        "key": "markers",
+        "types": [
+          "ARRAY"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "标记点"
+      },
+      {
+        "key": "polyline",
+        "types": [
+          "ARRAY"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "路线"
+      },
+      {
+        "key": "circles",
+        "types": [
+          "ARRAY"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "圆"
+      },
+      {
+        "key": "include-points",
+        "types": [
+          "ARRAY"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "缩放视野以包含所有给定的坐标点"
+      },
+      {
+        "key": "show-location",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "显示带有方向的当前定位点"
+      },
+      {
+        "key": "polygons",
+        "types": [
+          "ARRAY"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "多边形"
+      },
+      {
+        "key": "subkey",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "个性化地图使用的key"
+      },
+      {
+        "key": "layer-style",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 1,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "个性化地图配置的 style，不支持动态修改"
+      },
+      {
+        "key": "rotate",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "旋转角度，范围 0 ~ 360, 地图正北和设备 y 轴角度的夹角"
+      },
+      {
+        "key": "skew",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "倾斜角度，范围 0 ~ 40 , 关于 z 轴的倾角"
+      },
+      {
+        "key": "enable-3D",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "展示3D楼块(工具暂不支持）"
+      },
+      {
+        "key": "show-compass",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "显示指南针"
+      },
+      {
+        "key": "show-scale",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "显示比例尺，工具暂不支持"
+      },
+      {
+        "key": "enable-overlooking",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "开启俯视"
+      },
+      {
+        "key": "enable-zoom",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否支持缩放"
+      },
+      {
+        "key": "enable-scroll",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否支持拖动"
+      },
+      {
+        "key": "enable-rotate",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否支持旋转"
+      },
+      {
+        "key": "enable-satellite",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否开启卫星图"
+      },
+      {
+        "key": "enable-traffic",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": true,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否开启实时路况"
+      },
+      {
+        "key": "setting",
+        "types": [
+          "OBJECT"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "配置项"
+      }
+    ],
+    "events": [
+      "markertap",
+      "labeltap",
+      "controltap",
+      "callouttap",
+      "updated",
+      "regionchange",
+      "poitap"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/map.html"
+  },
+  "canvas": {
+    "description": "画布（2d 接口 v2.9.0 起支持同层渲染）。相关api：wx.createCanvasContext。",
+    "attributeDescriptors": [
+      {
+        "key": "type",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "指定 canvas 类型，支持 2d (2.9.0) 和 webgl (2.7.0)"
+      },
+      {
+        "key": "canvas-id",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "canvas 组件的唯一标识符，若指定了 type 则无需再指定该属性"
+      },
+      {
+        "key": "disable-scroll",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当在 canvas 中移动时且有绑定手势事件时，禁止屏幕滚动以及下拉刷新"
+      }
+    ],
+    "events": [
+      "error"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/canvas.html"
+  },
+  "ad": {
+    "description": "Banner 广告。",
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/ad.html",
+    "attributeDescriptors": [
+      {
+        "key": "unit-id",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "广告单元id"
+      },
+      {
+        "key": "ad-intervals",
+        "types": [
+          "NUMBER"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "广告自动刷新的间隔时间，单位为秒，参数值必须大于等于30（该参数不传入时 Banner 广告不会自动刷新）"
+      }
+    ],
+    "events": [
+      "load",
+      "error",
+      "close"
+    ],
+    "canOpen": true,
+    "canClose": false
+  },
+  "official-account": {
+    "description": "公众号关注组件。当用户扫小程序码打开小程序时，开发者可在小程序内配置公众号关注组件，方便用户快捷关注公众号，可嵌套在原生组件内。",
+    "attributeDescriptors": [],
+    "events": [
+      "load",
+      "error"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/official-account.html"
+  },
+  "open-data": {
+    "description": "用于展示微信开放的数据。",
+    "attributeDescriptors": [
+      {
+        "key": "type",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": true,
+        "enums": [
+          "groupName",
+          "userNickName",
+          "userAvatarUrl",
+          "userGender",
+          "userCity",
+          "userProvince",
+          "userCountry",
+          "userLanguage"
+        ],
+        "requiredInEnums": true,
+        "description": "开放数据类型"
+      },
+      {
+        "key": "open-gid",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "当 type=\"groupName\" 时生效, 群id"
+      },
+      {
+        "key": "lang",
+        "types": [
+          "STRING"
+        ],
+        "default": "en",
+        "required": false,
+        "enums": [
+          "zh_CN",
+          "zh_TW",
+          "en"
+        ],
+        "requiredInEnums": true,
+        "description": "当 type=\"user*\" 时生效，以哪种语言展示 userInfo"
+      },
+      {
+        "key": "default-text",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "数据为空时的默认文案"
+      },
+      {
+        "key": "default-avatar",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "用户头像为空时的默认图片，支持相对路径和网络图片路径"
+      }
+    ],
+    "events": [
+      "error"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html"
+  },
+  "web-view": {
+    "description": "承载网页的容器。会自动铺满整个小程序页面，个人类型的小程序暂不支持使用。",
+    "attributeDescriptors": [
+      {
+        "key": "src",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "webview 指向网页的链接"
+      }
+    ],
+    "events": [
+      "message",
+      "load",
+      "error"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html"
+  },
+  "navigation-bar": {
+    "description": "页面导航条配置节点，用于指定导航栏的一些属性。只能是 page-meta 组件内的第一个节点，需要配合它一同使用。",
+    "attributeDescriptors": [
+      {
+        "key": "title",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "导航条标题"
+      },
+      {
+        "key": "loading",
+        "types": [
+          "BOOLEAN"
+        ],
+        "default": false,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "是否在导航条显示 loading 加载提示"
+      },
+      {
+        "key": "front-color",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "导航条前景颜色值，包括按钮、标题、状态栏的颜色，仅支持 #ffffff 和 #000000"
+      },
+      {
+        "key": "background-color",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "导航条背景颜色值，有效值为十六进制颜色"
+      },
+      {
+        "key": "color-animation-duration",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 0,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "改变导航栏颜色时的动画时长，默认为 0 （即没有动画效果）"
+      },
+      {
+        "key": "color-animation-timing-func",
+        "types": [
+          "STRING",
+          "NUMBER"
+        ],
+        "default": "linear",
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "改变导航栏颜色时的动画方式"
+      }
+    ],
+    "events": [],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/navigation-bar.html"
+  },
+  "page-meta": {
+    "description": "页面属性配置节点，用于指定页面的一些属性、监听页面事件。只能是页面内的第一个节点。可以配合 navigation-bar 组件一同使用。",
+    "attributeDescriptors": [
+      {
+        "key": "background-text-style",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "下拉背景字体、loading 图的样式，仅支持 dark 和 light"
+      },
+      {
+        "key": "background-color",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "窗口的背景色，必须为十六进制颜色值"
+      },
+      {
+        "key": "background-color-top",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "顶部窗口的背景色，必须为十六进制颜色值，仅 iOS 支持"
+      },
+      {
+        "key": "background-color-bottom",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "底部窗口的背景色，必须为十六进制颜色值，仅 iOS 支持"
+      },
+      {
+        "key": "scroll-top",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "滚动位置，可以使用 px 或者 rpx 为单位，在被设置时，页面会滚动到对应位置"
+      },
+      {
+        "key": "scroll-duration",
+        "types": [
+          "NUMBER"
+        ],
+        "default": 300,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "滚动动画时长"
+      },
+      {
+        "key": "page-style",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "页面根节点样式，页面根节点是所有页面节点的祖先节点，相当于 HTML 中的 body 节点"
+      },
+      {
+        "key": "root-font-size",
+        "types": [
+          "STRING"
+        ],
+        "default": null,
+        "required": false,
+        "enums": [],
+        "requiredInEnums": true,
+        "description": "页面的根字体大小，页面中的所有 rem 单位，将使用这个字体大小作为参考值，即 1rem 等于这个字体大小"
+      }
+    ],
+    "events": [
+      "resize",
+      "scroll",
+      "scrollone"
+    ],
+    "canOpen": true,
+    "canClose": false,
+    "url": "https://developers.weixin.qq.com/miniprogram/dev/component/page-meta.html"
+  }
+}
