@@ -39,7 +39,7 @@
 
 **不支持通过IDE的插件市场安装**
 
-下载[发行版](https://github.com/iniceice88/wechat-miniprogram-ijplugin/releases)附件中的jar文件，在IDE中选择从磁盘安装
+下载[发行版](https://github.com/iniceice88/wechat-miniprogram-ijplugin/releases)附件中的zip文件，在IDE中选择从磁盘安装
 
 ### 使用
 
