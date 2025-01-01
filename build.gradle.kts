@@ -78,7 +78,7 @@ plugins {
   id("org.jetbrains.kotlin.jvm") version "1.9.22"
 }
 
-version = "4.1.1"
+version = "4.1.2"
 
 tasks {
   withType<JavaCompile> {
@@ -96,7 +96,7 @@ tasks {
   }
   patchPluginXml {
     sinceBuild.set("241")
-    untilBuild.set("242.*")
+//    untilBuild.set("242.*")
     val changeNotes = File(rootProject.projectDir, "changeNotes.html").readText(Charsets.UTF_8)
     val pluginDescription = File(rootProject.projectDir, "pluginDescription.html").readText(Charsets.UTF_8)
     this.changeNotes.set(changeNotes)
