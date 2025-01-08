@@ -13,7 +13,7 @@ object StringUtils {
 
   private fun findNoneStringMarkIndex(input: String, mark: String): Int {
     var idx = input.indexOf(mark)
-    while (idx > 0) {
+    while (idx >= 0) {
       if (!isMarkInsideQuotes(input, idx)) {
         return idx
       }

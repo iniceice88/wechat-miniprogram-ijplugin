@@ -186,7 +186,7 @@ private fun tryInjectAndAndMark(
 ): Boolean {
   if (!text.contains("&&")) return false
   // 在括号内的&&不处理
-  if (StringUtils.isMarkInsideParenthesis(text, "&&")){
+  if (StringUtils.isMarkInsideParenthesis(text, "&&")) {
     // 假装已经处理,这样的话表达式会被当成一个普通文本处理,否则&&
     return true
   }
@@ -205,7 +205,7 @@ private fun tryInjectAndAndMark(
 private fun getPrefixAndSuffix(text: String): Pair<String?, String?> {
   val trimmedText = text.trim()
   // {{ ...abc }}
-  if (text.contains("...")) {
+  if (StringUtils.containsNoneStringMark(trimmedText, "...")) {
     return Pair("_={", "}")
   }
   // {{ { age: 18 } }}
