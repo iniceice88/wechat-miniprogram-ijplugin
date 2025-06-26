@@ -101,17 +101,6 @@
         >
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
-
-        <!-- 注册自定义的 Action 注册之后会出错？ -->
-        <!--        <action-->
-        <!--                id="com.example.LbxmlCustomAction"-->
-        <!--                class="com.zxy.ijplugin.wechat_miniprogram.lang.wxml.test.LbxmlCustomAction"-->
-        <!--                text="My Custom LBXML Action"-->
-        <!--                description="Performs a custom action on LBXML files">-->
-
-        <!--            &lt;!&ndash; 将 Action 绑定到右键菜单中 &ndash;&gt;-->
-        <!--            <add-to-group group-id="EditorPopupMenu" anchor="last"/>-->
-        <!--        </action>-->
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
