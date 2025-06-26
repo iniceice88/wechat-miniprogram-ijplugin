@@ -94,7 +94,7 @@ class WxmlWxsInjector : MultiHostInjector {
     val xmlTag = context.parentOfType<XmlTag>()
     val scriptTagName = if (context.project.isQQContext()) "qs" else "wxs"
     if (xmlTag != null && xmlTag.name == scriptTagName) {
-      registrar.startInjecting(JavascriptLanguage.INSTANCE)
+      registrar.startInjecting(JavascriptLanguage)
         .addPlace(null, null, context, TextRange.from(0, context.textLength))
         .doneInjecting()
     }

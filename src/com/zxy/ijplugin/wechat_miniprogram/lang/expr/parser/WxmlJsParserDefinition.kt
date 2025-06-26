@@ -88,7 +88,7 @@ class WxmlJsParserDefinition : JavascriptParserDefinition() {
     private val FILE: IFileElementType = JSFileElementType.create(WxmlJsLanguage.INSTANCE)
 
     fun createLexer(project: Project?): Lexer {
-      return JSFlexAdapter(JSRootConfiguration.getInstance(project).languageLevel.dialect.optionHolder)
+      return JSFlexAdapter(JSRootConfiguration.getInstance(project!!).languageLevel.dialect.optionHolder)
     }
   }
 

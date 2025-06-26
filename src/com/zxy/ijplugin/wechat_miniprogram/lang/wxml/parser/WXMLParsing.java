@@ -1,5 +1,3 @@
-
-
 package com.zxy.ijplugin.wechat_miniprogram.lang.wxml.parser;
 
 import com.intellij.lang.PsiBuilder;
@@ -54,16 +52,16 @@ public class WXMLParsing {
         PsiBuilder.Marker error = null;
         while (eof()) {
             final IElementType tt = token();
-            if (tt == XML_START_TAG_START) {
+            if (tt == XmlTokenType.XML_START_TAG_START) {
                 error = flushError(error);
                 parseTag();
             } else if (isCommentToken(tt)) {
                 error = flushError(error);
                 parseComment();
-            } else if (tt == XML_PI_START) {
+            } else if (tt == XmlTokenType.XML_PI_START) {
                 error = flushError(error);
                 parseProcessingInstruction();
-            } else if (tt == XML_REAL_WHITE_SPACE) {
+            } else if (tt == XmlTokenType.XML_REAL_WHITE_SPACE) {
                 error = flushError(error);
                 advance();
             } else {
@@ -80,7 +78,7 @@ public class WXMLParsing {
     }
 
     protected void parseTag() {
-        assert token() == XML_START_TAG_START : "Tag start expected";
+        assert token() == XmlTokenType.XML_START_TAG_START : "Tag start expected";
         final PsiBuilder.Marker tag = mark();
 
         final String tagName = parseTagHeader(tag);
@@ -89,11 +87,11 @@ public class WXMLParsing {
         final PsiBuilder.Marker content = mark();
         parseTagContent();
 
-        if (token() == XML_END_TAG_START) {
+        if (token() == XmlTokenType.XML_END_TAG_START) {
             final PsiBuilder.Marker footer = mark();
             advance();
 
-            if (token() == XML_NAME) {
+            if (token() == XmlTokenType.XML_NAME) {
                 String endName = myBuilder.getTokenText();
                 if (!tagName.equals(endName) && myTagNamesStack.contains(endName)) {
                     footer.rollbackTo();
@@ -112,7 +110,7 @@ public class WXMLParsing {
                 advance();
             }
 
-            if (token() == XML_TAG_END) {
+            if (token() == XmlTokenType.XML_TAG_END) {
                 advance();
             } else {
                 error("Closing tag is not done");
@@ -131,7 +129,7 @@ public class WXMLParsing {
         advance();
 
         final String tagName;
-        if (token() != XML_NAME || myBuilder.rawLookup(-1) == TokenType.WHITE_SPACE) {
+        if (token() != XmlTokenType.XML_NAME || myBuilder.rawLookup(-1) == TokenType.WHITE_SPACE) {
             error("Tag name expected");
             tagName = "";
         } else {
@@ -143,9 +141,9 @@ public class WXMLParsing {
 
         do {
             final IElementType tt = token();
-            if (tt == XML_NAME) {
+            if (tt == XmlTokenType.XML_NAME) {
                 parseAttribute();
-            } else if (tt == XML_CHAR_ENTITY_REF || tt == XML_ENTITY_REF_TOKEN) {
+            } else if (tt == XmlTokenType.XML_CHAR_ENTITY_REF || tt == XmlTokenType.XML_ENTITY_REF_TOKEN) {
                 parseReference();
             } else {
                 break;
@@ -153,14 +151,14 @@ public class WXMLParsing {
         }
         while (true);
 
-        if (token() == XML_EMPTY_ELEMENT_END) {
+        if (token() == XmlTokenType.XML_EMPTY_ELEMENT_END) {
             advance();
             myTagNamesStack.pop();
             tag.done(XML_TAG);
             return null;
         }
 
-        if (token() == XML_TAG_END) {
+        if (token() == XmlTokenType.XML_TAG_END) {
             advance();
         } else {
             error("Tag start is not closed");
@@ -182,29 +180,29 @@ public class WXMLParsing {
         PsiBuilder.Marker xmlText = null;
         while (true) {
             final IElementType tt = token();
-            if (tt == null || tt == XML_END_TAG_START) {
+            if (tt == null || tt == XmlTokenType.XML_END_TAG_START) {
                 break;
             }
 
-            if (tt == XML_START_TAG_START) {
+            if (tt == XmlTokenType.XML_START_TAG_START) {
                 xmlText = terminateText(xmlText);
                 parseTag();
-            } else if (tt == XML_PI_START) {
+            } else if (tt == XmlTokenType.XML_PI_START) {
                 xmlText = terminateText(xmlText);
                 parseProcessingInstruction();
-            } else if (tt == XML_ENTITY_REF_TOKEN) {
+            } else if (tt == XmlTokenType.XML_ENTITY_REF_TOKEN) {
                 xmlText = terminateText(xmlText);
                 parseReference();
-            } else if (tt == XML_CHAR_ENTITY_REF) {
+            } else if (tt == XmlTokenType.XML_CHAR_ENTITY_REF) {
                 xmlText = startText(xmlText);
                 parseReference();
-            } else if (tt == XML_CDATA_START) {
+            } else if (tt == XmlTokenType.XML_CDATA_START) {
                 xmlText = startText(xmlText);
                 parseCData();
             } else if (isCommentToken(tt)) {
                 xmlText = terminateText(xmlText);
                 parseComment();
-            } else if (tt == XML_BAD_CHARACTER) {
+            } else if (tt == XmlTokenType.XML_BAD_CHARACTER) {
                 xmlText = startText(xmlText);
                 // 忽略 XML_BAD_CHARACTER 错误
                 advance();
@@ -223,7 +221,7 @@ public class WXMLParsing {
     }
 
     protected boolean isCommentToken(final IElementType tt) {
-        return tt == XML_COMMENT_START;
+        return tt == XmlTokenType.XML_COMMENT_START;
     }
 
     @NotNull
@@ -239,9 +237,9 @@ public class WXMLParsing {
     }
 
     private void parseCData() {
-        assert token() == XML_CDATA_START;
+        assert token() == XmlTokenType.XML_CDATA_START;
         final PsiBuilder.Marker cdata = mark();
-        while (token() != XML_CDATA_END && eof()) {
+        while (token() != XmlTokenType.XML_CDATA_END && eof()) {
             advance();
         }
 
@@ -257,18 +255,18 @@ public class WXMLParsing {
         advance();
         while (true) {
             final IElementType tt = token();
-            if (tt == XML_COMMENT_CHARACTERS || tt == XML_CONDITIONAL_COMMENT_START
-                    || tt == XML_CONDITIONAL_COMMENT_START_END || tt == XML_CONDITIONAL_COMMENT_END_START
-                    || tt == XML_CONDITIONAL_COMMENT_END) {
+            if (tt == XmlTokenType.XML_COMMENT_CHARACTERS || tt == XmlTokenType.XML_CONDITIONAL_COMMENT_START
+                    || tt == XmlTokenType.XML_CONDITIONAL_COMMENT_START_END || tt == XmlTokenType.XML_CONDITIONAL_COMMENT_END_START
+                    || tt == XmlTokenType.XML_CONDITIONAL_COMMENT_END) {
                 advance();
                 continue;
-            } else if (tt == XML_BAD_CHARACTER) {
+            } else if (tt == XmlTokenType.XML_BAD_CHARACTER) {
                 final PsiBuilder.Marker error = mark();
                 advance();
                 error.error("Bad character");
                 continue;
             }
-            if (tt == XML_COMMENT_END) {
+            if (tt == XmlTokenType.XML_COMMENT_END) {
                 advance();
             }
             break;
@@ -277,9 +275,9 @@ public class WXMLParsing {
     }
 
     private void parseReference() {
-        if (token() == XML_CHAR_ENTITY_REF) {
+        if (token() == XmlTokenType.XML_CHAR_ENTITY_REF) {
             advance();
-        } else if (token() == XML_ENTITY_REF_TOKEN) {
+        } else if (token() == XmlTokenType.XML_ENTITY_REF_TOKEN) {
             final PsiBuilder.Marker ref = mark();
             advance();
             ref.done(XML_ENTITY_REF);
@@ -289,10 +287,10 @@ public class WXMLParsing {
     }
 
     private void parseAttribute() {
-        assert token() == XML_NAME;
+        assert token() == XmlTokenType.XML_NAME;
         final PsiBuilder.Marker att = mark();
         advance();
-        if (token() == XML_EQ) {
+        if (token() == XmlTokenType.XML_EQ) {
             advance();
             parseAttributeValue();
         }
@@ -301,26 +299,26 @@ public class WXMLParsing {
 
     private void parseAttributeValue() {
         final PsiBuilder.Marker attValue = mark();
-        if (token() == XML_ATTRIBUTE_VALUE_START_DELIMITER) {
+        if (token() == XmlTokenType.XML_ATTRIBUTE_VALUE_START_DELIMITER) {
             while (true) {
                 final IElementType tt = token();
-                if (tt == null || tt == XML_ATTRIBUTE_VALUE_END_DELIMITER || tt == XML_END_TAG_START || tt == XML_EMPTY_ELEMENT_END ||
-                        tt == XML_START_TAG_START) {
+                if (tt == null || tt == XmlTokenType.XML_ATTRIBUTE_VALUE_END_DELIMITER || tt == XmlTokenType.XML_END_TAG_START || tt == XmlTokenType.XML_EMPTY_ELEMENT_END ||
+                        tt == XmlTokenType.XML_START_TAG_START) {
                     break;
                 }
 
-                if (tt == XML_BAD_CHARACTER) {
+                if (tt == XmlTokenType.XML_BAD_CHARACTER) {
 //                    final PsiBuilder.Marker error = mark();
                     advance();
 //                    error.error("Unescaped \\& or nonterminated character/entity reference");
-                } else if (tt == XML_ENTITY_REF_TOKEN) {
+                } else if (tt == XmlTokenType.XML_ENTITY_REF_TOKEN) {
                     parseReference();
                 } else {
                     advance();
                 }
             }
 
-            if (token() == XML_ATTRIBUTE_VALUE_END_DELIMITER) {
+            if (token() == XmlTokenType.XML_ATTRIBUTE_VALUE_END_DELIMITER) {
                 advance();
             } else {
                 error("Attribute value is not closed");
@@ -333,30 +331,30 @@ public class WXMLParsing {
     }
 
     private void parseProcessingInstruction() {
-        assert token() == XML_PI_START;
+        assert token() == XmlTokenType.XML_PI_START;
         final PsiBuilder.Marker pi = mark();
         advance();
-        if (token() != XML_NAME) {
+        if (token() != XmlTokenType.XML_NAME) {
             error("Processing instruction name expected");
         } else {
             advance();
         }
 
         final IElementType tokenType = token();
-        if (tokenType == XML_TAG_CHARACTERS) {
-            while (token() == XML_TAG_CHARACTERS) {
+        if (tokenType == XmlTokenType.XML_TAG_CHARACTERS) {
+            while (token() == XmlTokenType.XML_TAG_CHARACTERS) {
                 advance();
             }
         } else {
-            while (token() == XML_NAME) {
+            while (token() == XmlTokenType.XML_NAME) {
                 advance();
-                if (token() == XML_EQ) {
+                if (token() == XmlTokenType.XML_EQ) {
                     advance();
                 }
             }
         }
 
-        if (token() == XML_PI_END) {
+        if (token() == XmlTokenType.XML_PI_END) {
             advance();
         } else {
             error("Processing instruction not terminated");

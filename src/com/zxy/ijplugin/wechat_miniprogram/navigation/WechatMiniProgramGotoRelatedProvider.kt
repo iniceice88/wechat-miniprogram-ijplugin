@@ -134,7 +134,7 @@ class WechatMiniProgramGotoRelatedProvider : GotoRelatedProvider() {
 
     companion object {
       fun create(psiFile: PsiFile): MyGotoRelatedItem? = when (psiFile.fileType) {
-        JavaScriptFileType.INSTANCE -> MyGotoRelatedItem(psiFile, "Script", psiFile.name, 1)
+        JavaScriptFileType -> MyGotoRelatedItem(psiFile, "Script", psiFile.name, 1)
         WXMLFileType.INSTANCE, QMLFileType.INSTANCE -> MyGotoRelatedItem(psiFile, "Template", psiFile.name, 2)
         WXSSFileType.INSTANCE, QSSFileType.INSTANCE -> MyGotoRelatedItem(psiFile, "Styles", psiFile.name, 3)
         JsonFileType.INSTANCE -> MyGotoRelatedItem(psiFile, "Configurations", psiFile.name, 4)

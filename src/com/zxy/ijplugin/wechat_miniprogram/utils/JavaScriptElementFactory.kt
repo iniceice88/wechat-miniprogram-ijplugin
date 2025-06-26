@@ -91,7 +91,7 @@ object JavaScriptElementFactory {
 
     private fun createDummyFile(project: Project, fileContent: String): PsiFile {
         val name = "dummy.js"
-        return PsiFileFactory.getInstance(project).createFileFromText(name, JavascriptLanguage.INSTANCE, fileContent)
+        return PsiFileFactory.getInstance(project).createFileFromText(name, JavascriptLanguage, fileContent)
     }
 
 }

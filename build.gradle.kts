@@ -25,7 +25,7 @@
  *
  *       Legal Entity means the entity making a Contribution and all its Affiliates.
  *
- *       Affiliates means entities that control, or are controlled by, or are under common control with a party to this License, ‘control’ means direct or indirect ownership of at least fifty percent (50%) of the voting power, capital or other securities of controlled or commonly controlled entity.
+ *       Affiliates means entities that control, or are controlled by, or are under common control with a party to this License, 'control' means direct or indirect ownership of at least fifty percent (50%) of the voting power, capital or other securities of controlled or commonly controlled entity.
  *
  *    Contribution means the copyrightable work licensed by a particular Contributor under this License.
  *
@@ -35,7 +35,7 @@
  *
  *    2. Grant of Patent License
  *
- *       Subject to the terms and conditions of this License, each Contributor hereby grants to you a perpetual, worldwide, royalty-free, non-exclusive, irrevocable (except for revocation under this Section) patent license to make, have made, use, offer for sale, sell, import or otherwise transfer its Contribution where such patent license is only limited to the patent claims owned or controlled by such Contributor now or in future which will be necessarily infringed by its Contribution alone, or by combination of the Contribution with the Software to which the Contribution was contributed, excluding of any patent claims solely be infringed by your or others’ modification or other combinations. If you or your Affiliates directly or indirectly (including through an agent, patent licensee or assignee）, institute patent litigation (including a cross claim or counterclaim in a litigation) or other patent enforcement activities against any individual or entity by alleging that the Software or any Contribution in it infringes patents, then any patent license granted to you under this License for the Software shall terminate as of the date such litigation or activity is filed or taken.
+ *       Subject to the terms and conditions of this License, each Contributor hereby grants to you a perpetual, worldwide, royalty-free, non-exclusive, irrevocable (except for revocation under this Section) patent license to make, have made, use, offer for sale, sell, import or otherwise transfer its Contribution where such patent license is only limited to the patent claims owned or controlled by such Contributor now or in future which will be necessarily infringed by its Contribution alone, or by combination of the Contribution with the Software to which the Contribution was contributed, excluding of any patent claims solely be infringed by your or others' modification or other combinations. If you or your Affiliates directly or indirectly (including through an agent, patent licensee or assignee）, institute patent litigation (including a cross claim or counterclaim in a litigation) or other patent enforcement activities against any individual or entity by alleging that the Software or any Contribution in it infringes patents, then any patent license granted to you under this License for the Software shall terminate as of the date such litigation or activity is filed or taken.
  *
  *    3. No Trademark License
  *
@@ -47,7 +47,7 @@
  *
  *    5. Disclaimer of Warranty and Limitation of Liability
  *
- *       The Software and Contribution in it are provided without warranties of any kind, either express or implied. In no event shall any Contributor or copyright holder be liable to you for any damages, including, but not limited to any direct, or indirect, special or consequential damages arising from your use or inability to use the Software or the Contribution in it, no matter how it’s caused or based on which legal theory, even if advised of the possibility of such damages.
+ *       The Software and Contribution in it are provided without warranties of any kind, either express or implied. In no event shall any Contributor or copyright holder be liable to you for any damages, including, but not limited to any direct, or indirect, special or consequential damages arising from your use or inability to use the Software or the Contribution in it, no matter how it's caused or based on which legal theory, even if advised of the possibility of such damages.
  *
  *    End of the Terms and Conditions
  *
@@ -56,7 +56,7 @@
  *       To apply the Mulan PSL v1 to your work, for easy identification by recipients, you are suggested to complete following three steps:
  *
  *       i. Fill in the blanks in following statement, including insert your software name, the year of the first publication of your software, and your name identified as the copyright owner;
- *       ii. Create a file named “LICENSE” which contains the whole context of this License in the first directory of your software package;
+ *       ii. Create a file named "LICENSE" which contains the whole context of this License in the first directory of your software package;
  *       iii. Attach the statement to the appropriate annotated syntax at the beginning of each source file.
  *
  *    Copyright (c) [2019] [name of copyright holder]
@@ -71,14 +71,59 @@
  *    See the Mulan PSL v1 for more details.
  */
 
-fun properties(key: String) = project.findProperty(key).toString()
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-  id("org.jetbrains.intellij") version "1.17.0"
   java
-  id("org.jetbrains.kotlin.jvm") version "1.9.22"
+  kotlin("jvm") version "2.1.10"
+  id("org.jetbrains.intellij.platform") version "2.6.0"
 }
 
-version = "4.1.3"
+group = "com.inice"
+version = "5.1.1"
+
+repositories {
+  mavenCentral()
+  intellijPlatform {
+    defaultRepositories()
+  }
+}
+
+dependencies {
+  implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.0")
+  implementation("org.jetbrains:annotations-java5:23.0.0")
+  implementation("org.jetbrains.kotlin:kotlin-script-runtime:2.0.0")
+  implementation("org.jetbrains.kotlin:kotlin-reflect:2.0.0")
+
+  intellijPlatform {
+    intellijIdeaUltimate("2025.1")
+    bundledPlugin("JavaScript")
+    bundledPlugin("com.intellij.modules.json")
+    bundledPlugin("com.intellij.css")
+    // https://plugins.jetbrains.com/plugin/11451-less
+    bundledPlugin("org.jetbrains.plugins.less")
+    //plugins.jetbrains.com/plugin/11449-sass
+    bundledPlugin("org.jetbrains.plugins.sass")
+    // https://plugins.jetbrains.com/plugin/7316-stylus
+    plugin("org.jetbrains.plugins.stylus", "251.23774.16")
+  }
+}
+
+// Configure Gradle IntelliJ Plugin
+// Read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html
+intellijPlatform {
+  pluginConfiguration {
+    ideaVersion {
+      sinceBuild = "251"
+      untilBuild = "252.*"
+    }
+  }
+  pluginVerification {
+    ides {
+      recommended()
+    }
+  }
+}
 
 tasks {
   withType<JavaCompile> {
@@ -86,17 +131,12 @@ tasks {
     targetCompatibility = "17"
   }
   withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-      jvmTarget = "17"
-      freeCompilerArgs = freeCompilerArgs + "-Xjvm-default=all-compatibility"
-    }
+    compilerOptions.jvmTarget = JvmTarget.JVM_17
   }
   publishPlugin {
     token.set(System.getenv("TOKEN"))
   }
   patchPluginXml {
-    sinceBuild.set("241")
-//    untilBuild.set("242.*")
     val changeNotes = File(rootProject.projectDir, "changeNotes.html").readText(Charsets.UTF_8)
     val pluginDescription = File(rootProject.projectDir, "pluginDescription.html").readText(Charsets.UTF_8)
     this.changeNotes.set(changeNotes)
@@ -114,26 +154,4 @@ sourceSets {
       srcDirs("resources")
     }
   }
-}
-
-intellij {
-  type.set("IU")
-  version.set("2024.1")
-  pluginName.set("wechat mini program")
-  downloadSources.set(true)
-  updateSinceUntilBuild.set(false)
-  plugins.set(listOf("JavaScript", "com.intellij.css", "less", "sass", "org.jetbrains.plugins.stylus:241.14494.140"))
-}
-
-repositories {
-  mavenCentral()
-}
-
-dependencies {
-  implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.0")
-  implementation("org.jetbrains:annotations-java5:23.0.0")
-  implementation("org.jetbrains.kotlin:kotlin-script-runtime:1.7.0")
-  implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.0")
-
-  testImplementation("junit:junit:4.13.2")
 }
