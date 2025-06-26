@@ -1,5 +1,8 @@
 # wechat-miniprogram-plugin
 
+> [!IMPORTANT]
+> 推荐使用 [官方插件](https://plugins.jetbrains.com/plugin/24687-wechat-mini-program)
+
 ### Fork自[wechat-miniprogram-plugin](https://gitee.com/zxy_c/wechat-miniprogram-plugin)，在原有基础上增加了一些功能
 
 ### BUG修复
