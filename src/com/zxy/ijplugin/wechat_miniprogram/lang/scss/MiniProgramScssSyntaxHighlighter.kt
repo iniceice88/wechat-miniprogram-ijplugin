@@ -74,16 +74,16 @@
 package com.zxy.ijplugin.wechat_miniprogram.lang.scss
 
 import com.intellij.lexer.Lexer
-import com.intellij.psi.css.impl.util.scheme.CssElementDescriptorFactory2
 import org.jetbrains.plugins.scss.highlighting.SCSSSyntaxHighlighter
 import org.jetbrains.plugins.scss.lexer.SCSSHighlightingLexer
+import java.util.*
 
 class MiniProgramScssSyntaxHighlighter : SCSSSyntaxHighlighter() {
 
     override fun getHighlightingLexer(): Lexer {
-        return SCSSHighlightingLexer(CssElementDescriptorFactory2.getInstance().valueIdentifiers.apply {
-            this.add("rpx")
-        })
+        val valueIdentifiers = HashSet<String>()
+        valueIdentifiers.add("rpx")
+        return SCSSHighlightingLexer(valueIdentifiers)
     }
 
 }

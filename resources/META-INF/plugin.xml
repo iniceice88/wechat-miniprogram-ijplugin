@@ -118,6 +118,7 @@
         <projectConfigurable groupId="language"
                              instance="com.zxy.ijplugin.wechat_miniprogram.settings.MyProjectConfigurable"/>
 
+        <!-- 插件安装后提醒 -->
         <!--  <postStartupActivity implementation="com.zxy.ijplugin.wechat_miniprogram.plugin.UpdateInfoActivity"/>-->
         <gotoRelatedProvider
                 implementation="com.zxy.ijplugin.wechat_miniprogram.navigation.WechatMiniProgramGotoRelatedProvider"/>

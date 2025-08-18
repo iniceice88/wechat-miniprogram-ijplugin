@@ -74,14 +74,14 @@
 package com.zxy.ijplugin.wechat_miniprogram.lang.less
 
 import com.intellij.lexer.Lexer
-import com.intellij.psi.css.impl.util.scheme.CssElementDescriptorFactory2
 import org.jetbrains.plugins.less.highlighting.LESSSyntaxHighlighter
 import org.jetbrains.plugins.less.lexer.LESSHighlightingLexer
+import java.util.*
 
 class MiniProgramLessSyntaxHighlighter : LESSSyntaxHighlighter() {
     override fun getHighlightingLexer(): Lexer {
-        return LESSHighlightingLexer(CssElementDescriptorFactory2.getInstance().valueIdentifiers.apply {
-            this.add("rpx")
-        })
+        val valueIdentifiers = HashSet<String>()
+        valueIdentifiers.add("rpx")
+        return LESSHighlightingLexer(valueIdentifiers)
     }
 }

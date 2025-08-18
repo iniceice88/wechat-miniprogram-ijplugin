@@ -80,7 +80,7 @@ plugins {
 }
 
 group = "com.inice"
-version = "5.1.1"
+version = "5.2.1"
 
 repositories {
   mavenCentral()
@@ -96,7 +96,7 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-reflect:2.0.0")
 
   intellijPlatform {
-    intellijIdeaUltimate("2025.1")
+    intellijIdeaUltimate("2025.2")
     bundledPlugin("JavaScript")
     bundledPlugin("com.intellij.modules.json")
     bundledPlugin("com.intellij.css")
@@ -105,7 +105,7 @@ dependencies {
     //plugins.jetbrains.com/plugin/11449-sass
     bundledPlugin("org.jetbrains.plugins.sass")
     // https://plugins.jetbrains.com/plugin/7316-stylus
-    plugin("org.jetbrains.plugins.stylus", "251.23774.16")
+    plugin("org.jetbrains.plugins.stylus", "252.23892.298")
   }
 }
 
@@ -114,8 +114,8 @@ dependencies {
 intellijPlatform {
   pluginConfiguration {
     ideaVersion {
-      sinceBuild = "251"
-      untilBuild = "252.*"
+      sinceBuild = "252"
+      untilBuild = "253.*"
     }
   }
   pluginVerification {
