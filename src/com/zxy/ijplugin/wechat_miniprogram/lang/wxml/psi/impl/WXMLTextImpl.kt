@@ -71,122 +71,29 @@
  *    See the Mulan PSL v1 for more details.
  */
 
-package com.zxy.ijplugin.wechat_miniprogram.lang.wxml
+package com.zxy.ijplugin.wechat_miniprogram.lang.wxml.psi.impl
 
-import com.intellij.lang.injection.MultiHostInjector
-import com.intellij.lang.injection.MultiHostRegistrar
 import com.intellij.openapi.util.TextRange
-import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiLanguageInjectionHost
-import com.intellij.psi.impl.source.xml.XmlAttributeValueImpl
+import com.intellij.psi.LiteralTextEscaper
 import com.intellij.psi.impl.source.xml.XmlTextImpl
-import com.intellij.psi.xml.XmlAttribute
-import com.zxy.ijplugin.wechat_miniprogram.lang.expr.WxmlJsLanguage
-import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.utils.isEventHandler
-import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.utils.valueTextRangeInSelf
-import com.zxy.ijplugin.wechat_miniprogram.utils.StringUtils
-
-private val UNSUPPORTED_MUSTACHE_TAGS = setOf("wxs", "include", "import")
-private val UNSUPPORTED_MUSTACHE_ATTRIBUTES = setOf("wx:for-item", "wx:key", "wx:for-index")
 
 /**
- * 在wxml中的js
+ * Keep raw XmlText content for language injection so operators like && remain intact.
  */
-class WxmlJSInjector : MultiHostInjector {
+class WXMLTextImpl : XmlTextImpl() {
+  override fun createLiteralTextEscaper(): LiteralTextEscaper<XmlTextImpl> {
+    return object : LiteralTextEscaper<XmlTextImpl>(this) {
+      override fun isOneLine(): Boolean = false
 
-  override fun elementsToInjectIn(): MutableList<out Class<out PsiElement>> {
-    return mutableListOf(XmlTextImpl::class.java, XmlAttributeValueImpl::class.java)
-  }
+      override fun decode(rangeInsideHost: TextRange, outChars: StringBuilder): Boolean {
+        outChars.append(rangeInsideHost.substring(myHost.text))
+        return true
+      }
 
-  override fun getLanguagesToInject(multiHostRegistrar: MultiHostRegistrar, psiElement: PsiElement) {
-    if (psiElement.language !is WXMLLanguage) return
-
-    when (psiElement) {
-      is XmlTextImpl -> injectMustacheExpressions(psiElement, multiHostRegistrar)
-      is XmlAttributeValueImpl -> injectInAttributeValue(psiElement, multiHostRegistrar)
+      override fun getOffsetInHost(offsetInDecoded: Int, rangeInsideHost: TextRange): Int {
+        val offset = rangeInsideHost.startOffset + offsetInDecoded
+        return offset.coerceIn(rangeInsideHost.startOffset, rangeInsideHost.endOffset)
+      }
     }
   }
-
-  private fun injectInAttributeValue(
-    psiElement: XmlAttributeValueImpl,
-    multiHostRegistrar: MultiHostRegistrar
-  ) {
-    val attribute = psiElement.parent as? XmlAttribute ?: return
-    if (attribute.isUnsupportedMustacheContext()) return
-
-    val value = psiElement.value
-    if (attribute.isEventHandler() && !hasMustacheExpression(value)) {
-      // bind/catch 事件属性不含 {{}} 时，按方法调用注入。
-      multiHostRegistrar.startInjecting(WxmlJsLanguage.INSTANCE)
-        .addPlace(null, "();", psiElement, psiElement.valueTextRangeInSelf())
-        .doneInjecting()
-      return
-    }
-
-    injectMustacheExpressions(psiElement, multiHostRegistrar)
-  }
-}
-
-private fun XmlAttribute.isUnsupportedMustacheContext(): Boolean {
-  val tagName = parent.name
-  val attributeName = name
-  if (tagName in UNSUPPORTED_MUSTACHE_TAGS) return true
-  if (tagName == "template" && attributeName == "name") return true
-  return attributeName in UNSUPPORTED_MUSTACHE_ATTRIBUTES
-}
-
-private fun injectMustacheExpressions(
-  injectionHost: PsiLanguageInjectionHost,
-  multiHostRegistrar: MultiHostRegistrar
-) {
-  val hostText = injectionHost.text
-  findMustacheContentRanges(hostText).forEach { range ->
-    val text = range.substring(hostText)
-    val (prefix, suffix) = getPrefixAndSuffix(text)
-    multiHostRegistrar.startInjecting(WxmlJsLanguage.INSTANCE)
-      .addPlace(prefix, suffix, injectionHost, range)
-      .doneInjecting()
-  }
-}
-
-fun hasMustacheExpression(text: String): Boolean {
-  return findMustacheContentRanges(text).isNotEmpty()
-}
-
-private fun findMustacheContentRanges(text: String): List<TextRange> {
-  val ranges = mutableListOf<TextRange>()
-  var from = 0
-  while (from < text.length) {
-    val start = text.indexOf("{{", from)
-    if (start < 0) break
-    val end = text.indexOf("}}", start + 2)
-    if (end < 0) break
-
-    ranges.add(TextRange(start + 2, end))
-    from = end + 2
-  }
-  return ranges
-}
-
-private fun getPrefixAndSuffix(text: String): Pair<String?, String?> {
-  val trimmedText = text.trim()
-  // {{ ...abc }}
-  if (StringUtils.containsNoneStringMark(trimmedText, "...")) {
-    return Pair("_={", "}")
-  }
-  // {{ { age: 18 } }}
-  if (trimmedText.startsWith("{") && trimmedText.endsWith("}")) {
-    return Pair("_=", null)
-  }
-  // {{ age: 18,name: 'ab:cd' }}
-  if (trimmedText.contains(":")) {
-    // 查找所有的冒号。如果有一个冒号不在引号内，那么就认为这是一个对象
-    // 但是?是三元表达式的条件 aaa ? bbb : ccc 是合法的，不需要转义
-    if (StringUtils.containsNoneStringMark(trimmedText, ":") &&
-      !StringUtils.containsNoneStringMark(trimmedText, "?")
-    ) {
-      return Pair("_={", "}")
-    }
-  }
-  return Pair(null, null)
 }

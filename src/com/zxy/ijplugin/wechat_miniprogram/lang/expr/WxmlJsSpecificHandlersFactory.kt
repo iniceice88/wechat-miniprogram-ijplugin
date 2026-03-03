@@ -87,7 +87,7 @@ import com.intellij.psi.xml.XmlAttribute
 import com.intellij.psi.xml.XmlAttributeValue
 import com.zxy.ijplugin.wechat_miniprogram.context.MyJSPredefinedLibraryProvider.Companion.PAGE_LIFETIMES
 import com.zxy.ijplugin.wechat_miniprogram.context.RelateFileHolder
-import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.DOUBLE_BRACE_REGEX
+import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.hasMustacheExpression
 import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.utils.isEventHandler
 import com.zxy.ijplugin.wechat_miniprogram.utils.ComponentJsUtils
 
@@ -121,23 +121,20 @@ class WxmlJsReferenceExpressionResolver(
     val originFile = injectionHost.containingFile ?: return ResolveResult.EMPTY_ARRAY
     val jsPsiFile =
       RelateFileHolder.SCRIPT.findFile(originFile) as? JSFile ?: return super.resolve(expression, incompleteCode)
-    if (injectionHost !is XmlAttributeValue) {
-      return super.resolve(expression, incompleteCode)
-    }
 
-    if (PsiTreeUtil.getParentOfType(
-        injectionHost, XmlAttribute::class.java
-      )?.isEventHandler() == true && !DOUBLE_BRACE_REGEX.matches(
-        injectionHost.value
-      )
-    ) {
+    val isEventAttributeWithoutMustache = (injectionHost as? XmlAttributeValue)?.let { attributeValue ->
+      PsiTreeUtil.getParentOfType(attributeValue, XmlAttribute::class.java)?.isEventHandler() == true &&
+        !hasMustacheExpression(attributeValue.value)
+    } == true
+
+    if (isEventAttributeWithoutMustache) {
       // 事件
       // 找到js文件中的methods
       resolveMethods(jsPsiFile)?.let {
         return it
       }
     } else {
-      // 属性
+      // 属性 / 文本节点 {{}}
       resolveProperties(jsPsiFile)?.let {
         return it
       }
@@ -216,9 +213,7 @@ class WxmlJsReferenceExpressionResolver(
     keyValueProperty: JSProperty?,
     results: ArrayList<ResolveResult>
   ) {
-    val methodsPropertyObjectLiteral = PsiTreeUtil.getChildOfType(
-      keyValueProperty, JSObjectLiteralExpression::class.java
-    )
+    val methodsPropertyObjectLiteral = keyValueProperty?.let { findObjectLiteralValue(it) }
     val componentItems = PsiTreeUtil.getChildrenOfType(methodsPropertyObjectLiteral, JSProperty::class.java)
     componentItems?.find {
       it.name == myReferencedName
@@ -266,9 +261,7 @@ class WxmlJsReferenceExpressionResolver(
     val dataProperty = callExpressionProperties.find {
       it.name == "data"
     }
-    val dataPropertyObjectLiteral = PsiTreeUtil.getChildOfType(
-      dataProperty, JSObjectLiteralExpression::class.java
-    )
+    val dataPropertyObjectLiteral = dataProperty?.let { findObjectLiteralValue(it) }
     val dataItems = PsiTreeUtil.getChildrenOfType(dataPropertyObjectLiteral, JSProperty::class.java)
     dataItems?.find { it.name == myReferencedName }?.let {
       results.add(PsiElementResolveResult(it))
@@ -276,4 +269,25 @@ class WxmlJsReferenceExpressionResolver(
     return results.toTypedArray()
   }
 
+  /**
+   * Extract object-literal value from a property, including cases like:
+   * `data: { a: 1 } as any`, `data: ({ a: 1 }) as Foo`.
+   */
+  private fun findObjectLiteralValue(property: JSProperty): JSObjectLiteralExpression? {
+    // Prefer the property.value expression tree rather than direct-child traversal.
+    var expr: JSExpression? = property.value
+
+    // unwrap parentheses
+    while (expr is JSParenthesizedExpression) {
+      expr = PsiTreeUtil.getChildOfType(expr, JSExpression::class.java)
+    }
+
+    // unwrap `as Type` / type-cast / other wrapper expressions by walking down to the first object literal.
+    // (Different IDE builds use different PSI element classes; searching for first child object literal is stable.)
+    if (expr !is JSObjectLiteralExpression) {
+      PsiTreeUtil.getChildOfType(expr, JSObjectLiteralExpression::class.java)?.let { return it }
+    }
+
+    return expr as? JSObjectLiteralExpression
+  }
 }

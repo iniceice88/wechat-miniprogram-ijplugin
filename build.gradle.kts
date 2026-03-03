@@ -80,7 +80,7 @@ plugins {
 }
 
 group = "com.inice"
-version = "5.2.1"
+version = "5.3.1"
 
 repositories {
   mavenCentral()

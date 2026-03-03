@@ -78,11 +78,15 @@ import com.intellij.psi.impl.source.tree.CompositeElement
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.xml.XmlElementType
 import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.psi.impl.WXMLAttributeValueImpl
+import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.psi.impl.WXMLTextImpl
 
 class WxmlXmlAstFactory : XmlASTFactory() {
   override fun createComposite(type: IElementType): CompositeElement? {
     if (type == XmlElementType.XML_ATTRIBUTE_VALUE) {
       return WXMLAttributeValueImpl()
+    }
+    if (type == XmlElementType.XML_TEXT) {
+      return WXMLTextImpl()
     }
     return super.createComposite(type)
   }
