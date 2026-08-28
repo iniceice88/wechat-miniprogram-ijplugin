@@ -1,42 +1,62 @@
-# wechat-miniprogram-plugin
+# WeChat Mini Program Support
+
+[English](README.md) | [简体中文](README.zh-CN.md)
+
+IntelliJ Platform plugin support for WeChat Mini Program projects, with language support, navigation, inspections, and project file generation for WXML, WXSS, WXS, and related configuration files.
 
 > [!IMPORTANT]
-> 推荐使用 [官方插件](https://plugins.jetbrains.com/plugin/24687-wechat-mini-program)
+> For most users, the [official WeChat Mini Program plugin](https://plugins.jetbrains.com/plugin/24687-wechat-mini-program) is recommended.
 
-### Fork自[wechat-miniprogram-plugin](https://gitee.com/zxy_c/wechat-miniprogram-plugin)，在原有基础上增加了一些功能
+This project is a fork of [wechat-miniprogram-plugin](https://gitee.com/zxy_c/wechat-miniprogram-plugin) with additional features and fixes.
 
-### BUG修复
+## Improvements in this fork
 
-- 根据`project.config.json`中的`miniprogramRoot`配置，识别`app.json`文件
+### Bug fixes
 
-#### wxml文件代码块`{{}}`中可正常写js代码。原来是不能换行,不能有'&'等特殊字符，也不能跳转/代码提示。
+- Locates `app.json` according to the `miniprogramRoot` setting in `project.config.json`.
+- Improves JavaScript support inside WXML `{{ }}` expressions. Expressions can contain line breaks and special characters such as `&`, while code completion and navigation continue to work.
 
-### 功能增加
+### Additional features
 
-- `app.json`文件更多跳转路径支持。包括`entryPagePath`, `subpackages`,`tabBar`
-- `index.json`文件支持componentGenerics下组件的路径跳转
-- 对于componentGenerics组件,wxml里不再报错，且支持跳转
-- 从wxml跳转到js文件对应 属性/方法 时,支持`ComponentWithComputed()`
-- wxml中`generic:xxx`写法不再报错
-- wxml中自定义组件的属性写法支持`ab-cd`的写法，实际对应的是`abCd`属性
-- [template](https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/template.html) wxml中使用`app.json`中的`usingComponents`时不报错，且支持跳转
-- JSON Schema改为中文
+- Adds path navigation for more fields in `app.json`, including `entryPagePath`, `subpackages`, and `tabBar`.
+- Supports component path navigation under `componentGenerics` in page and component JSON files.
+- Recognizes generic components in WXML and provides navigation without false error reports.
+- Supports navigation from WXML bindings to properties and methods declared with `ComponentWithComputed()`.
+- Recognizes the `generic:xxx` syntax in WXML without reporting errors.
+- Maps kebab-case custom component attributes such as `ab-cd` to camelCase properties such as `abCd`.
+- Recognizes components registered through `usingComponents` in `app.json` when used in WXML [`template`](https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/template.html) files, including navigation support.
+- Provides Chinese JSON Schemas.
 
-### TODO
+## Core features
 
-- [ ] 处理wxml到Behavior的跳转
-- [ ] 调查：this.data.xxx无法跳转
+- WXML, WXSS, and WXS language support.
+- WeChat Mini Program page and component generation.
+- Navigation between related files, components, properties, methods, styles, and templates.
+- Custom component and configuration file support.
+- Code inspections and quick fixes.
+- QQ Mini Program project support.
+- npm component support.
 
-### 原版功能
+See the [upstream Wiki](https://gitee.com/zxy_c/wechat-miniprogram-plugin/wikis) for more detailed documentation about the original feature set.
 
-在[Wiki](https://gitee.com/zxy_c/wechat-miniprogram-plugin/wikis)中浏览更多功能
+## Installation
 
-### 安装
+This fork is not available through the IDE plugin marketplace.
 
-**不支持通过IDE的插件市场安装**
+1. Download the plugin ZIP from the [GitHub Releases](https://github.com/iniceice88/wechat-miniprogram-ijplugin/releases) page. Do not extract it.
+2. In your JetBrains IDE, open **Settings/Preferences | Plugins**.
+3. Click the gear icon and select **Install Plugin from Disk...**.
+4. Select the downloaded ZIP file and restart the IDE when prompted.
 
-下载[发行版](https://github.com/iniceice88/wechat-miniprogram-ijplugin/releases)附件中的zip文件，在IDE中选择从磁盘安装
+## Usage
 
-### 使用
+Open a WeChat Mini Program or QQ Mini Program project in the IDE. Make sure the project contains a `project.config.json` file; the plugin will then enable its project features automatically.
 
-通过IDE打开微信小程序项目即可使用全部功能
+## Roadmap
+
+- [ ] Support navigation from WXML to behaviors.
+- [ ] Investigate navigation for `this.data.xxx` references.
+
+## License
+
+This project is licensed under the [Mulan Permissive Software License, Version 1](LICENSE).
