@@ -78,6 +78,7 @@ import com.intellij.lang.javascript.JavaScriptSpecificHandlersFactory
 import com.intellij.lang.javascript.psi.*
 import com.intellij.lang.javascript.psi.impl.JSReferenceExpressionImpl
 import com.intellij.lang.javascript.psi.resolve.JSReferenceExpressionResolver
+import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiElementResolveResult
 import com.intellij.psi.PsiFile
 import com.intellij.psi.ResolveResult
@@ -90,6 +91,8 @@ import com.zxy.ijplugin.wechat_miniprogram.context.RelateFileHolder
 import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.hasMustacheExpression
 import com.zxy.ijplugin.wechat_miniprogram.lang.wxml.utils.isEventHandler
 import com.zxy.ijplugin.wechat_miniprogram.utils.ComponentJsUtils
+import java.util.Collections
+import java.util.IdentityHashMap
 
 class WxmlJsSpecificHandlersFactory : JavaScriptSpecificHandlersFactory() {
   override fun createReferenceExpressionResolver(
@@ -162,6 +165,9 @@ class WxmlJsReferenceExpressionResolver(
         componentApiResolve(jsCallExpression)?.let {
           if (it.isNotEmpty()) return it
         }
+        resolveFromBehaviors(jsCallExpression, componentApiResolve)?.let {
+          if (it.isNotEmpty()) return it
+        }
       } else if (ComponentJsUtils.isPageCall(jsReferenceExpression.text)) {
         // PageApi
         pageApiResolve(jsCallExpression)?.let {
@@ -170,8 +176,85 @@ class WxmlJsReferenceExpressionResolver(
       }
     }
 
-    // TODO Behavior
     return null
+  }
+
+  /**
+   * Resolve members contributed by the behaviors used by a component or another behavior.
+   *
+   * A behavior is commonly referenced through `const behavior = require("./behavior")`.
+   * Following PSI references instead of parsing the path ourselves also lets the JavaScript
+   * plugin handle aliases and other module-resolution details.
+   */
+  private fun resolveFromBehaviors(
+    ownerCallExpression: JSCallExpression,
+    behaviorResolve: (jsCallExpression: JSCallExpression) -> Array<ResolveResult>?,
+    visitedBehaviorCalls: MutableSet<JSCallExpression> = Collections.newSetFromMap(IdentityHashMap())
+  ): Array<ResolveResult>? {
+    val options = getCallExpressionProperties(ownerCallExpression)
+    val behaviors = options.find { it.name == "behaviors" }?.value as? JSArrayLiteralExpression ?: return null
+
+    // Later behaviors have higher priority according to the Mini Program merge rules.
+    for (behaviorExpression in behaviors.expressions.reversed()) {
+      for (behaviorCall in findBehaviorCalls(behaviorExpression)) {
+        if (!visitedBehaviorCalls.add(behaviorCall)) continue
+
+        behaviorResolve(behaviorCall)?.let {
+          if (it.isNotEmpty()) return it
+        }
+        resolveFromBehaviors(behaviorCall, behaviorResolve, visitedBehaviorCalls)?.let {
+          if (it.isNotEmpty()) return it
+        }
+      }
+    }
+    return null
+  }
+
+  /** Follow variables and module references until a `Behavior({...})` call is found. */
+  private fun findBehaviorCalls(expression: JSExpression): Sequence<JSCallExpression> {
+    val queue = ArrayDeque<PsiElement>()
+    val visited = Collections.newSetFromMap(IdentityHashMap<PsiElement, Boolean>())
+    val results = LinkedHashSet<JSCallExpression>()
+    queue.add(expression)
+
+    while (queue.isNotEmpty()) {
+      val element = queue.removeFirst()
+      if (!visited.add(element)) continue
+
+      if (element is JSCallExpression && isBehaviorCallExpression(element)) {
+        results.add(element)
+        continue
+      }
+
+      if (element is PsiFile) {
+        PsiTreeUtil.findChildrenOfType(element, JSCallExpression::class.java)
+          .filterTo(results, this::isBehaviorCallExpression)
+        continue
+      }
+
+      if (element is JSVariable) {
+        element.initializer?.let(queue::addLast)
+      }
+      if (element is JSProperty) {
+        element.value?.let(queue::addLast)
+      }
+
+      element.references.forEach { reference ->
+        if (reference is com.intellij.psi.PsiPolyVariantReference) {
+          reference.multiResolve(false).mapNotNullTo(queue) { it.element }
+        } else {
+          reference.resolve()?.let(queue::addLast)
+        }
+      }
+      element.children.forEach(queue::addLast)
+    }
+
+    return results.asSequence()
+  }
+
+  private fun isBehaviorCallExpression(callExpression: JSCallExpression): Boolean {
+    val methodExpression = callExpression.methodExpression as? JSReferenceExpression ?: return false
+    return ComponentJsUtils.isBehaviorCall(methodExpression.referenceName)
   }
 
   private fun resolveMethods(jsPsiFile: PsiFile): Array<ResolveResult>? {
